@@ -29,12 +29,21 @@ namespace PokéDex
             InitializeComponent();
         }
 
-        private void BtnGetpokemon_Click(object sender, RoutedEventArgs e)
+        //private List<Pokemon> pokéFullList = new List<Pokemon>();
+ 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           var res= PokemonDAL.DAL.GetAllPokemon();
-           MessageBox.Show("Retrieved " + res.Count + " pokemons");
-           var s = PokemonDAL.DAL.GetPokemon(25);
-           MessageBox.Show("Retrieved pokemon " + s.name);
+            var res = PokemonDAL.DAL.GetAllPokemon();
+            MessageBox.Show("Retrieved " + res.Count + " pokemons");
+            var s = PokemonDAL.DAL.GetPokemon(25);
+            MessageBox.Show("Retrieved pokemon " + s.name);
+            //pokéFullList = res;
+            pokéListBox.ItemsSource = res;
+
+            foreach (var pokemon in res)
+            {
+                //pokéListBox.Items.Add(pokemon);
+            }
         }
     }
 
