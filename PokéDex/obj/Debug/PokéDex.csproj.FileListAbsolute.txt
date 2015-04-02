@@ -1,0 +1,71 @@
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\PokéDex.exe.config
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\PokéDex.exe
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\PokéDex.pdb
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\FirstFloor.ModernUI.dll
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\MahApps.Metro.dll
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\Newtonsoft.Json.dll
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\System.Windows.Interactivity.dll
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\FirstFloor.ModernUI.xml
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\MahApps.Metro.xml
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\bin\Debug\Newtonsoft.Json.xml
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\PokéDex.csprojResolveAssemblyReference.cache
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\LinQ.baml
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\MainWindow.baml
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\Resources\Icons.baml
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\LinQ.g.cs
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\MainWindow.g.cs
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\App.g.cs
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\PokéDex_MarkupCompile.cache
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\PokéDex.g.resources
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\PokéDex.Properties.Resources.resources
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\PokéDex.csproj.GenerateResource.Cache
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\PokéDex.exe
+D:\Lab Softwareontwikkeling 4\PokéDex\PokéDex\obj\Debug\PokéDex.pdb
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\PokéDex.exe.config
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\PokéDex.exe
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\PokéDex.pdb
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\PokéDex.exe
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\PokéDex.pdb
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\MahApps.Metro.dll
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\Newtonsoft.Json.dll
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\System.Windows.Interactivity.dll
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\FirstFloor.ModernUI.xml
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\MahApps.Metro.xml
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\bin\Debug\Newtonsoft.Json.xml
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\PokéDex.csprojResolveAssemblyReference.cache
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\LinQ.baml
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\MainWindow.baml
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\Resources\Icons.baml
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\LinQ.g.cs
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\MainWindow.g.cs
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\App.g.cs
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\PokéDex_MarkupCompile.cache
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\PokéDex.g.resources
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\PokéDex.Properties.Resources.resources
+D:\Documenten\Dropbox\DEMO\PokéDex\PokéDex\obj\Debug\PokéDex.csproj.GenerateResource.Cache
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\Resources\PokemonData.txt
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\PokéDex.exe.config
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\PokéDex.exe
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\PokéDex.pdb
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\MahApps.Metro.dll
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\Newtonsoft.Json.dll
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\System.Windows.Interactivity.dll
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\MahApps.Metro.xml
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\Newtonsoft.Json.xml
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.csprojResolveAssemblyReference.cache
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\MainWindow.baml
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\MainWindow.g.cs
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\App.g.cs
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex_Content.g.cs
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex_MarkupCompile.cache
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.g.resources
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.Properties.Resources.resources
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.csproj.GenerateResource.Cache
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.exe
+g:\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.pdb
+d:\Documenten\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\bin\Debug\PokéDex.exe.config
+d:\Documenten\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.exe
+d:\Documenten\Dropbox\PROGPROJECTS\2_SoftwareOntwikkeling\DataBindingPokemon\PokéDex\obj\Debug\PokéDex.pdb
+C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\PokéDex\PokéDex\bin\Debug\PokéDex.exe.config
+C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\PokéDex\PokéDex\obj\Debug\PokéDex.exe
+C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\PokéDex\PokéDex\obj\Debug\PokéDex.pdb

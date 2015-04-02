@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PokéDex.Pokemon">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAQAAAAEAAAAAAAAAAAQAAFAAAABAAAAAAAAgA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="stats" />
+      <Property Name="moves" />
+      <Property Name="damages" />
+      <Property Name="misc" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PokéDex.Stats">
+    <Position X="6.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAgAAAAAQCAAABAAAAAAAI=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Moves">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAgEQAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="level" />
+      <Property Name="tmhm" />
+      <Property Name="egg" />
+      <Property Name="tutor" />
+      <Property Name="gen34" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PokéDex.Level">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAEAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Tmhm">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAEAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Egg">
+    <Position X="10.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Tutor">
+    <Position X="8.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Gen34">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Damages">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABwAAICAAgEAAAACAAIAAlAAAAAAAQAJAAAQBAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Misc">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIABAAABAQAAAQCAAAAABAAAAAgAAAAAAADAAE=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="sex" />
+      <Property Name="abilities" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PokéDex.Sex">
+    <Position X="1.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokéDex.Abilities">
+    <Position X="1.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pokemons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
