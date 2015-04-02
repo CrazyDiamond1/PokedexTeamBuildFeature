@@ -86,3 +86,4 @@ C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwik
 C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\PokéDex\PokéDex\obj\Debug\PokéDex.g.resources
 C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\PokéDex\PokéDex\obj\Debug\PokéDex.Properties.Resources.resources
 C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\PokéDex\PokéDex\obj\Debug\PokéDex.csproj.GenerateResource.Cache
+C:\Users\Sjeedie\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\PokéDex\PokéDex\obj\Debug\App.baml
