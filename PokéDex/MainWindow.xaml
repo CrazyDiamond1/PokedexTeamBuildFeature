@@ -3,11 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 Width="1200" Height="650"
                       Title="Pokédex" >
-
-
-
-  
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>

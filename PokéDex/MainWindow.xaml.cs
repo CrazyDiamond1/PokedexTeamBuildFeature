@@ -22,34 +22,20 @@ namespace PokéDex
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow
     {
-        
-
         public MainWindow()
         {
             InitializeComponent();
-           
-
         }
-
 
         private void BtnGetpokemon_Click(object sender, RoutedEventArgs e)
         {
            var res= PokemonDAL.DAL.GetAllPokemon();
            MessageBox.Show("Retrieved " + res.Count + " pokemons");
-            var s = PokemonDAL.DAL.GetPokemon(25);
-            MessageBox.Show("Retrieved pokemon " + s.name);
+           var s = PokemonDAL.DAL.GetPokemon(25);
+           MessageBox.Show("Retrieved pokemon " + s.name);
         }
-
-
-
-
-
-
-
-
-
     }
 
 }
