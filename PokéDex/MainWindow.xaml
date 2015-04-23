@@ -13,9 +13,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding img}" Height="30"/>
-                        <TextBlock Text="       "/>
-                        <TextBlock Text="{Binding name}"/>
+                        <Image Source="{Binding img}" Height="50" Width="50"/>
+                        <TextBlock Text="           "/>
+                        <TextBlock Text="{Binding name}" FontSize="17"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
