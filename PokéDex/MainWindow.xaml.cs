@@ -38,13 +38,12 @@ namespace PokéDex
         MessageBox.Show("Retrieved " + res.Count + " pokemons");
         var s = PokemonDAL.DAL.GetPokemon(25);
         MessageBox.Show("Retrieved pokemon " + s.name);
-        //pokéFullList = res;
         pokéListBox.ItemsSource = res;
+    }
 
-        foreach (var pokemon in res)
-        {
-            //pokéListBox.Items.Add(pokemon);
-        }
+    private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        pokéImage.DataContext = PokemonDAL.DAL.GetPokemon(pokéListBox.SelectedIndex);
     }
 }
 

@@ -5,11 +5,12 @@
                       Width="1200" Height="650"
                       Title="Pokédex" Loaded="Window_Loaded" >
     <Grid>
-        <Grid.ColumnDefinitions  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="6*"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Name="pokéListBox" Margin="10">
+        <ListBox Name="pokéListBox" Margin="10" SelectionChanged="pokéListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -20,5 +21,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <GroupBox Grid.Column="1" Header="Summary">
+            <StackPanel>
+                <Image Name="pokéImage"/>
+                <GroupBox Header="Stats"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Controls:MetroWindow>
