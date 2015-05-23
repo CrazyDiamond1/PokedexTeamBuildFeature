@@ -12,7 +12,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel>
             <DockPanel Margin="5">
-                <ComboBox Name="FilterBox" HorizontalAlignment="Right">
+                <ComboBox Name="FilterBox" HorizontalAlignment="Right" SelectionChanged="FilterBox_SelectionChanged">
                     <ComboBoxItem Content="NAME"/>
                     <ComboBoxItem Content="ID"/>
                     <ComboBoxItem Content="TYPE"/>

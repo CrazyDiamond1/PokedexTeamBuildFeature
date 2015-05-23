@@ -32,7 +32,6 @@ namespace PokéDex
         }
 
         private List<Pokemon> res;
-        private List<Pokemon> doubleType;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -68,13 +67,18 @@ namespace PokéDex
                     case 2:
                         //LinqRes = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()) || p.type[1].ToLower().Contains(SearchBox.Text.ToLower()));
                         var type1 = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()));
-                        var type2 = res.Where(p => p.type[1].ToLower().Contains(SearchBox.Text.ToLower()));
+                        LinqRes = type1;
                         break;
                 }
                 pokéListBox.ItemsSource = LinqRes.ToList();
             }
             else
                 pokéListBox.ItemsSource = res;
+        }
+
+        private void FilterBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchBox.Text = "";
         }
     }
 }
