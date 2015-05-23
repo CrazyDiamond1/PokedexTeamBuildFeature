@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 using Newtonsoft.Json;
 
 namespace PokéDex
@@ -22,35 +23,30 @@ namespace PokéDex
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow : MetroWindow
+{
+    public MainWindow()
     {
-        
-
-        public MainWindow()
-        {
-            InitializeComponent();
-           
-
-        }
-
-
-        private void BtnGetpokemon_Click(object sender, RoutedEventArgs e)
-        {
-           var res= PokemonDAL.DAL.GetAllPokemon();
-           MessageBox.Show("Retrieved " + res.Count + " pokemons");
-            var s = PokemonDAL.DAL.GetPokemon(25);
-            MessageBox.Show("Retrieved pokemon " + s.name);
-        }
-
-
-
-
-
-
-
-
-
+        InitializeComponent();
     }
+
+    //private List<Pokemon> pokéFullList = new List<Pokemon>();
+
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        var res = PokemonDAL.DAL.GetAllPokemon();
+        //MessageBox.Show("Retrieved " + res.Count + " pokemons");
+        //var s = PokemonDAL.DAL.GetPokemon(25);
+        //MessageBox.Show("Retrieved pokemon " + s.name);
+        pokéListBox.ItemsSource = res;
+        pokéListBox.SelectedIndex = 0;
+    }
+
+    private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        FullGrid.DataContext = pokéListBox.SelectedItem;
+    }
+}
 
 }
 

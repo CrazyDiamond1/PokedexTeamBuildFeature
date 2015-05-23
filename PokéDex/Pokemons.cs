@@ -125,7 +125,4 @@ namespace PokéDex
         public string[] normal { get; set; }
         public string[] hidden { get; set; }
     }
- 
-   
-
 }
