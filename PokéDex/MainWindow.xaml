@@ -36,7 +36,13 @@
                             <StackPanel>
                                 <Label Content="{Binding id}"/>
                                 <Label Content="{Binding name}"/>
-                                <Label  Content="{Binding type}"/>
+                                <Label>
+                                    <DockPanel>
+                                        <TextBlock Text="{Binding type[0]}"/>
+                                        <TextBlock Name="SlashBlock" Text=" / " Visibility="Hidden"/>
+                                        <TextBlock Name="TypeBlock" Text="{Binding type[1]}" Visibility="Hidden"/>
+                                    </DockPanel>
+                                </Label>
                                 <Label Content="{Binding misc.capturerate}"/>
                             </StackPanel>
                         </DockPanel>

@@ -45,6 +45,10 @@ namespace PokéDex
     private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         FullGrid.DataContext = pokéListBox.SelectedItem;
+        if (TypeBlock.Text != "")
+            SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
+        else
+            SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Hidden;
     }
 }
 
