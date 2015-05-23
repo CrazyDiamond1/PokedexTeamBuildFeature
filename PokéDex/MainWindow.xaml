@@ -12,12 +12,12 @@
         </Grid.ColumnDefinitions>
         <StackPanel>
             <DockPanel Margin="5">
-                <ComboBox Name="FilterBox" HorizontalAlignment="Right">
+                <ComboBox Name="FilterBox" HorizontalAlignment="Right" SelectionChanged="FilterBox_SelectionChanged">
                     <ComboBoxItem Content="NAME"/>
                     <ComboBoxItem Content="ID"/>
                     <ComboBoxItem Content="TYPE"/>
                 </ComboBox>
-                <TextBox Name="SearchBox" TextAlignment="Left"/>
+                <TextBox Name="SearchBox" TextAlignment="Left" TextChanged="SearchBox_TextChanged"/>
         </DockPanel>
         <ListBox Name="pokéListBox" Margin="10" SelectionChanged="pokéListBox_SelectionChanged">
             <ListBox.ItemTemplate>
@@ -51,8 +51,8 @@
                                 <Label>
                                     <DockPanel>
                                         <TextBlock Text="{Binding type[0]}"/>
-                                        <TextBlock Name="SlashBlock" Text=" / " Visibility="Hidden"/>
-                                        <TextBlock Name="TypeBlock" Text="{Binding type[1]}" Visibility="Hidden"/>
+                                        <TextBlock Name="SlashBlock" Text=" / "/>
+                                        <TextBlock Name="TypeBlock" Text="{Binding type[1]}"/>
                                     </DockPanel>
                                 </Label>
                                 <Label Content="{Binding misc.capturerate}"/>
