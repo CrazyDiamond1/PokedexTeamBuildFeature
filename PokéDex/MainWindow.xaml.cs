@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -31,13 +32,11 @@ namespace PokéDex
         }
 
         private List<Pokemon> res;
+        private List<Pokemon> doubleType;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             res = PokemonDAL.DAL.GetAllPokemon();
-            //MessageBox.Show("Retrieved " + res.Count + " pokemons");
-            //var s = PokemonDAL.DAL.GetPokemon(25);
-            //MessageBox.Show("Retrieved pokemon " + s.name);
             pokéListBox.ItemsSource = res;
             pokéListBox.SelectedIndex = FilterBox.SelectedIndex = 0;
         }
@@ -53,7 +52,29 @@ namespace PokéDex
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (SearchBox.Text != "")
+            {
+                IEnumerable<Pokemon> LinqRes = res;
+                switch (FilterBox.SelectedIndex)
+                {
+                    case 0:
+                        LinqRes = res.Where(p => p.name.ToLower().Contains(SearchBox.Text.ToLower()));
+                        break;
 
+                    case 1:
+                        LinqRes = res.Where(p => p.id.ToString().Contains(SearchBox.Text));
+                        break;
+
+                    case 2:
+                        //LinqRes = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()) || p.type[1].ToLower().Contains(SearchBox.Text.ToLower()));
+                        var type1 = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()));
+                        var type2 = res.Where(p => p.type[1].ToLower().Contains(SearchBox.Text.ToLower()));
+                        break;
+                }
+                pokéListBox.ItemsSource = LinqRes.ToList();
+            }
+            else
+                pokéListBox.ItemsSource = res;
         }
     }
 }
