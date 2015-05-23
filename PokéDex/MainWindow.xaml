@@ -2,15 +2,18 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      Width="1200" Height="650"
+                      Width="800" Height="600"
                       Title="Pokédex" Loaded="Window_Loaded" TextBlock.TextAlignment="Center">
     <Grid Name="FullGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="6*"/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
             <DockPanel Margin="5">
                 <ComboBox Name="FilterBox" HorizontalAlignment="Right" SelectionChanged="FilterBox_SelectionChanged">
                     <ComboBoxItem Content="NAME"/>
@@ -18,49 +21,80 @@
                     <ComboBoxItem Content="TYPE"/>
                 </ComboBox>
                 <TextBox Name="SearchBox" TextAlignment="Left" TextChanged="SearchBox_TextChanged"/>
-        </DockPanel>
-        <ListBox Name="pokéListBox" Margin="10" SelectionChanged="pokéListBox_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
+            </DockPanel>
+            <ListBox Name="pokéListBox" Margin="10" SelectionChanged="pokéListBox_SelectionChanged" Grid.Row="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{Binding img}" Height="50" Width="50"/>
                             <StackPanel Margin="10,0,0,0" >
-                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left"/>
+                                    <DockPanel HorizontalAlignment="Left">
+                                        <TextBlock Text="#"/>
+                                        <TextBlock Text="{Binding id}"/>
+                                    </DockPanel>
                                 <TextBlock Text="{Binding name}" FontSize="17"/>
                             </StackPanel>
                         </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
         <GroupBox Grid.Column="1" Header="Summary" Name="SummaryBox">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <StackPanel>
-                <DockPanel>
-                    <Image Source="{Binding img}" Height="200" Width="200" Margin="20" HorizontalAlignment="Left"/>
-                    <GroupBox Header="General">
-                        <DockPanel Margin="5">
-                            <StackPanel>
-                                <Label Content="ID"/>
-                                <Label Content="NAME"/>
-                                <Label Content="TYPE"/>
-                                <Label Content="CATCH RATE"/>
-                            </StackPanel>
-                            <StackPanel>
-                                <Label Content="{Binding id}"/>
-                                <Label Content="{Binding name}"/>
+                    <Image Source="{Binding img}" Width="250" Height="250" Margin="5"/>
+                </StackPanel>
+                <GroupBox Grid.Column="1" Grid.Row="1" Header="Moveset">
+                    <ListBox Name="MovesListBox">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock Text="{Binding moves.level}"/>
+                                    <TextBlock Text="{Binding moves.name}"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </GroupBox>
+                <GroupBox Header="General" Grid.Column="1">
+                    <Viewbox Height="160" HorizontalAlignment="Left">
+                    <DockPanel Margin="5">
+                        <StackPanel>
+                            <Label Content="ID"/>
+                            <Label Content="NAME"/>
+                            <Label Content="TYPE"/>
+                            <Label Content="CATCH RATE"/>
+                        </StackPanel>
+                        <StackPanel>
                                 <Label>
                                     <DockPanel>
-                                        <TextBlock Text="{Binding type[0]}"/>
-                                        <TextBlock Name="SlashBlock" Text=" / "/>
-                                        <TextBlock Name="TypeBlock" Text="{Binding type[1]}"/>
+                                        <TextBlock Text="#"/>
+                                        <TextBlock Text="{Binding id}"/>
                                     </DockPanel>
                                 </Label>
-                                <Label Content="{Binding misc.capturerate}"/>
-                            </StackPanel>
+                            <Label Content="{Binding name}"/>
+                            <Label>
+                                <DockPanel>
+                                    <TextBlock Text="{Binding type[0]}"/>
+                                    <TextBlock x:Name="SlashBlock" Text=" / "/>
+                                    <TextBlock x:Name="TypeBlock" Text="{Binding type[1]}"/>
+                                </DockPanel>
+                            </Label>
+                            <Label Content="{Binding misc.capturerate}"/>
+                        </StackPanel>
                         </DockPanel>
-                    </GroupBox>
-                </DockPanel>
-                <GroupBox Header="Stats">
+                    </Viewbox>
+                </GroupBox>
+                <GroupBox Header="Stats" Grid.Row="1">
+                    <Viewbox>
                     <DockPanel Margin="5">
                         <StackPanel>
                             <Label Content="HP"/>
@@ -70,26 +104,36 @@
                             <Label Content="SPEC. ATTACK"/>
                             <Label Content="SPEC. DEFENSE"/>
                         </StackPanel>
-                        <StackPanel>
-                            <Label Content="{Binding stats.hp}"/>
-                            <Label Content="{Binding stats.attack}"/>
-                            <Label Content="{Binding stats.defense}"/>
-                            <Label Content="{Binding stats.speed}"/>
-                            <Label Content="{Binding stats.spattack}"/>
-                            <Label Content="{Binding stats.spdefense}"/>
+                        <StackPanel HorizontalAlignment="Right">
+                            <DockPanel>
+                                <Label Content="{Binding stats.hp}" Width="30"/>
+                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.hp}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="{Binding stats.attack}" Width="30"/>
+                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.attack}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="{Binding stats.defense}" Width="30"/>
+                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.defense}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="{Binding stats.speed}" Width="30"/>
+                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.speed}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="{Binding stats.spattack}" Width="30"/>
+                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spattack}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="{Binding stats.spdefense}" Width="30"/>
+                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spdefense}"/>
+                            </DockPanel>
                         </StackPanel>
-                    </DockPanel>
+                        </DockPanel>
+                    </Viewbox>
                 </GroupBox>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Grid.Column="2" Header="Moveset">
-            <ListBox Name="MovesListBox">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            </Grid>
         </GroupBox>
     </Grid>
 </Controls:MetroWindow>
