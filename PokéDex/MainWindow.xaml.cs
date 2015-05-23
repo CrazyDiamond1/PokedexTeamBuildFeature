@@ -35,15 +35,16 @@ namespace PokéDex
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
         var res = PokemonDAL.DAL.GetAllPokemon();
-        MessageBox.Show("Retrieved " + res.Count + " pokemons");
-        var s = PokemonDAL.DAL.GetPokemon(25);
-        MessageBox.Show("Retrieved pokemon " + s.name);
+        //MessageBox.Show("Retrieved " + res.Count + " pokemons");
+        //var s = PokemonDAL.DAL.GetPokemon(25);
+        //MessageBox.Show("Retrieved pokemon " + s.name);
         pokéListBox.ItemsSource = res;
+        pokéListBox.SelectedIndex = 0;
     }
 
     private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        pokéImage.DataContext = PokemonDAL.DAL.GetPokemon(pokéListBox.SelectedIndex);
+        FullGrid.DataContext = pokéListBox.SelectedItem;
     }
 }
 
