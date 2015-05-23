@@ -150,12 +150,6 @@ namespace PokéDex {
             return;
             case 4:
             this.SearchBox = ((System.Windows.Controls.TextBox)(target));
-            
-            #line 20 "..\..\MainWindow.xaml"
-            this.SearchBox.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.SearchBox_TextChanged);
-            
-            #line default
-            #line hidden
             return;
             case 5:
             this.pokéListBox = ((System.Windows.Controls.ListBox)(target));

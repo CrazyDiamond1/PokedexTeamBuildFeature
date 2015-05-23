@@ -24,40 +24,36 @@ namespace PokéDex
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : MetroWindow
-{
-    public MainWindow()
     {
-        InitializeComponent();
-    }
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
 
         private List<Pokemon> res;
 
-    private void Window_Loaded(object sender, RoutedEventArgs e)
-    {
-        res = PokemonDAL.DAL.GetAllPokemon();
-        //MessageBox.Show("Retrieved " + res.Count + " pokemons");
-        //var s = PokemonDAL.DAL.GetPokemon(25);
-        //MessageBox.Show("Retrieved pokemon " + s.name);
-        pokéListBox.ItemsSource = res;
-        pokéListBox.SelectedIndex = FilterBox.SelectedIndex = 0;
-    }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            res = PokemonDAL.DAL.GetAllPokemon();
+            //MessageBox.Show("Retrieved " + res.Count + " pokemons");
+            //var s = PokemonDAL.DAL.GetPokemon(25);
+            //MessageBox.Show("Retrieved pokemon " + s.name);
+            pokéListBox.ItemsSource = res;
+            pokéListBox.SelectedIndex = FilterBox.SelectedIndex = 0;
+        }
 
-    private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        FullGrid.DataContext = pokéListBox.SelectedItem;
-        if (TypeBlock.Text != "")
-            SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
-        else
-            SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Hidden;
-    }
+        private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FullGrid.DataContext = pokéListBox.SelectedItem;
+            if (TypeBlock.Text != "")
+                SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
+            else
+                SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Hidden;
+        }
 
-    private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
-    {
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
     }
 }
-
-}
-
-
-
