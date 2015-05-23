@@ -30,21 +30,30 @@ namespace PokéDex
         InitializeComponent();
     }
 
-    //private List<Pokemon> pokéFullList = new List<Pokemon>();
+        private List<Pokemon> res;
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        var res = PokemonDAL.DAL.GetAllPokemon();
+        res = PokemonDAL.DAL.GetAllPokemon();
         //MessageBox.Show("Retrieved " + res.Count + " pokemons");
         //var s = PokemonDAL.DAL.GetPokemon(25);
         //MessageBox.Show("Retrieved pokemon " + s.name);
         pokéListBox.ItemsSource = res;
-        pokéListBox.SelectedIndex = 0;
+        pokéListBox.SelectedIndex = FilterBox.SelectedIndex = 0;
     }
 
     private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         FullGrid.DataContext = pokéListBox.SelectedItem;
+        if (TypeBlock.Text != "")
+            SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
+        else
+            SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Hidden;
+    }
+
+    private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+
     }
 }
 

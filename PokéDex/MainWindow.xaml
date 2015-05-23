@@ -10,17 +10,29 @@
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <StackPanel>
+            <DockPanel Margin="5">
+                <ComboBox Name="FilterBox" HorizontalAlignment="Right">
+                    <ComboBoxItem Content="NAME"/>
+                    <ComboBoxItem Content="ID"/>
+                    <ComboBoxItem Content="TYPE"/>
+                </ComboBox>
+                <TextBox Name="SearchBox" TextAlignment="Left"/>
+        </DockPanel>
         <ListBox Name="pokéListBox" Margin="10" SelectionChanged="pokéListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding img}" Height="50" Width="50"/>
-                        <TextBlock Text="           "/>
-                        <TextBlock Text="{Binding name}" FontSize="17"/>
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding img}" Height="50" Width="50"/>
+                            <StackPanel Margin="10,0,0,0" >
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left"/>
+                                <TextBlock Text="{Binding name}" FontSize="17"/>
+                            </StackPanel>
+                        </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        </StackPanel>
         <GroupBox Grid.Column="1" Header="Summary" Name="SummaryBox">
                 <StackPanel>
                 <DockPanel>
@@ -36,7 +48,13 @@
                             <StackPanel>
                                 <Label Content="{Binding id}"/>
                                 <Label Content="{Binding name}"/>
-                                <Label  Content="{Binding type}"/>
+                                <Label>
+                                    <DockPanel>
+                                        <TextBlock Text="{Binding type[0]}"/>
+                                        <TextBlock Name="SlashBlock" Text=" / " Visibility="Hidden"/>
+                                        <TextBlock Name="TypeBlock" Text="{Binding type[1]}" Visibility="Hidden"/>
+                                    </DockPanel>
+                                </Label>
                                 <Label Content="{Binding misc.capturerate}"/>
                             </StackPanel>
                         </DockPanel>
