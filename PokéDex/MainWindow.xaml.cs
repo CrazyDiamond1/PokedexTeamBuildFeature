@@ -43,6 +43,8 @@ namespace PokéDex
 
         private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (pokéListBox.SelectedIndex == -1)
+                pokéListBox.SelectedIndex = 0;
             FullGrid.DataContext = pokéListBox.SelectedItem;
             if (TypeBlock.Text != "")
                 SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
@@ -79,6 +81,8 @@ namespace PokéDex
 
         private void FilterBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (FilterBox.SelectedIndex == -1)
+                FilterBox.SelectedIndex = 0;
             SearchBox.Text = "";
         }
     }
