@@ -28,10 +28,10 @@
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{Binding img}" Height="50" Width="50"/>
                             <StackPanel Margin="10,0,0,0" >
-                                    <DockPanel HorizontalAlignment="Left">
-                                        <TextBlock Text="#"/>
-                                        <TextBlock Text="{Binding id}"/>
-                                    </DockPanel>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="#"/>
+                                    <TextBlock Text="{Binding id}"/>
+                                </DockPanel>
                                 <TextBlock Text="{Binding name}" FontSize="17"/>
                             </StackPanel>
                         </StackPanel>
@@ -53,83 +53,177 @@
                     <Image Source="{Binding img}" Width="250" Height="250" Margin="5"/>
                 </StackPanel>
                 <GroupBox Grid.Column="1" Grid.Row="1" Header="Moveset">
-                    <ListBox Name="MovesListBox">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <DockPanel>
-                                    <TextBlock Text="{Binding moves.level}"/>
-                                    <TextBlock Text="{Binding moves.name}"/>
+                    <Grid>
+                        <ListBox Name="LevelMovesListBox">
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[0].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[0].name}"/>
                                 </DockPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[1].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[1].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[2].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[2].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[3].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[3].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[4].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[4].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[5].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[5].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[6].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[6].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[7].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[7].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[8].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[8].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[9].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[9].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[10].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[10].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[11].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[11].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[12].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[12].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[13].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[13].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding moves.level[14].learnedat}" Width="30"/>
+                                    <TextBlock Text="{Binding moves.level[14].name}"/>
+                                </DockPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                        <ListBox Name="NewMovesListBox" Margin="10" Grid.Row="1" Visibility="Collapsed">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                            <DockPanel HorizontalAlignment="Left">
+                                                <TextBlock Text="{Binding learnedat}"/>
+                                                <TextBlock Text="{Binding name}"/>
+                                            </DockPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
                 </GroupBox>
                 <GroupBox Header="General" Grid.Column="1">
                     <Viewbox Height="160" HorizontalAlignment="Left">
-                    <DockPanel Margin="5">
-                        <StackPanel>
-                            <Label Content="ID"/>
-                            <Label Content="NAME"/>
-                            <Label Content="TYPE"/>
-                            <Label Content="CATCH RATE"/>
-                        </StackPanel>
-                        <StackPanel>
+                        <DockPanel Margin="5">
+                            <StackPanel>
+                                <Label Content="ID"/>
+                                <Label Content="NAME"/>
+                                <Label Content="TYPE"/>
+                                <Label Content="CATCH RATE"/>
+                            </StackPanel>
+                            <StackPanel>
                                 <Label>
                                     <DockPanel>
                                         <TextBlock Text="#"/>
                                         <TextBlock Text="{Binding id}"/>
                                     </DockPanel>
                                 </Label>
-                            <Label Content="{Binding name}"/>
-                            <Label>
-                                <DockPanel>
-                                    <TextBlock Text="{Binding type[0]}"/>
-                                    <TextBlock x:Name="SlashBlock" Text=" / "/>
-                                    <TextBlock x:Name="TypeBlock" Text="{Binding type[1]}"/>
-                                </DockPanel>
-                            </Label>
-                            <Label Content="{Binding misc.capturerate}"/>
-                        </StackPanel>
+                                <Label Content="{Binding name}"/>
+                                <Label>
+                                    <DockPanel>
+                                        <TextBlock Text="{Binding type[0]}"/>
+                                        <TextBlock x:Name="SlashBlock" Text=" / "/>
+                                        <TextBlock x:Name="TypeBlock" Text="{Binding type[1]}"/>
+                                    </DockPanel>
+                                </Label>
+                                <Label Content="{Binding misc.capturerate}"/>
+                            </StackPanel>
                         </DockPanel>
                     </Viewbox>
                 </GroupBox>
                 <GroupBox Header="Stats" Grid.Row="1">
                     <Viewbox>
-                    <DockPanel Margin="5">
-                        <StackPanel>
-                            <Label Content="HP"/>
-                            <Label Content="ATTACK"/>
-                            <Label Content="DEFENSE"/>
-                            <Label Content="SPEED"/>
-                            <Label Content="SPEC. ATTACK"/>
-                            <Label Content="SPEC. DEFENSE"/>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Right">
-                            <DockPanel>
-                                <Label Content="{Binding stats.hp}" Width="30"/>
-                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.hp}"/>
-                            </DockPanel>
-                            <DockPanel>
-                                <Label Content="{Binding stats.attack}" Width="30"/>
-                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.attack}"/>
-                            </DockPanel>
-                            <DockPanel>
-                                <Label Content="{Binding stats.defense}" Width="30"/>
-                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.defense}"/>
-                            </DockPanel>
-                            <DockPanel>
-                                <Label Content="{Binding stats.speed}" Width="30"/>
-                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.speed}"/>
-                            </DockPanel>
-                            <DockPanel>
-                                <Label Content="{Binding stats.spattack}" Width="30"/>
-                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spattack}"/>
-                            </DockPanel>
-                            <DockPanel>
-                                <Label Content="{Binding stats.spdefense}" Width="30"/>
-                                <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spdefense}"/>
-                            </DockPanel>
-                        </StackPanel>
+                        <DockPanel Margin="5">
+                            <StackPanel>
+                                <Label Content="HP"/>
+                                <Label Content="ATTACK"/>
+                                <Label Content="DEFENSE"/>
+                                <Label Content="SPEED"/>
+                                <Label Content="SPEC. ATTACK"/>
+                                <Label Content="SPEC. DEFENSE"/>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Right">
+                                <DockPanel>
+                                    <Label Content="{Binding stats.hp}" Width="30"/>
+                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.hp}"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="{Binding stats.attack}" Width="30"/>
+                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.attack}"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="{Binding stats.defense}" Width="30"/>
+                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.defense}"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="{Binding stats.speed}" Width="30"/>
+                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.speed}"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="{Binding stats.spattack}" Width="30"/>
+                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spattack}"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="{Binding stats.spdefense}" Width="30"/>
+                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spdefense}"/>
+                                </DockPanel>
+                            </StackPanel>
                         </DockPanel>
                     </Viewbox>
                 </GroupBox>
