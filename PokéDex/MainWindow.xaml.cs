@@ -85,5 +85,22 @@ namespace PokéDex
                 FilterBox.SelectedIndex = 0;
             SearchBox.Text = "";
         }
+
+        private void MoveTypeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LevelMovesBox.Visibility = EggMovesBox.Visibility = TmHmMovesBox.Visibility = Visibility.Hidden;
+            switch (MoveTypeBox.SelectedIndex)
+            {
+                case 0:
+                    LevelMovesBox.Visibility = Visibility.Visible;
+                    break;
+                case 1:
+                    EggMovesBox.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    TmHmMovesBox.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
     }
 }

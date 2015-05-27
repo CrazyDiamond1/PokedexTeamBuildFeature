@@ -49,115 +49,46 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel>
-                    <Image Source="{Binding img}" Width="250" Height="250" Margin="5"/>
-                </StackPanel>
+                <Image Source="{Binding img}" Width="250" Height="250" Margin="5"/>
                 <GroupBox Grid.Column="1" Grid.Row="1" Header="Moveset">
                     <Grid>
-                        <ListBox Name="LevelMovesListBox" FontSize="15">
-                            <ListBoxItem>
+                    <ListBox Name="LevelMovesBox" ItemsSource="{Binding moves.level}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
                                 <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[0].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[0].name}"/>
+                                    <TextBlock Text="{Binding learnedat}" Width="50"/>
+                                    <TextBlock Text="{Binding name}"/>
                                 </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                        <ListBox Name="EggMovesBox" ItemsSource="{Binding moves.egg}" Visibility="Hidden">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
                                 <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[1].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[1].name}"/>
+                                    <TextBlock Text="EGG" Width="50"/>
+                                    <TextBlock Text="{Binding name}"/>
                                 </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                        <ListBox Name="TmHmMovesBox" ItemsSource="{Binding moves.tmhm}" Visibility="Hidden">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
                                 <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[2].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[2].name}"/>
+                                    <TextBlock Text="{Binding learnedat}" Width="50"/>
+                                    <TextBlock Text="{Binding name}"/>
                                 </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[3].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[3].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[4].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[4].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[5].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[5].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[6].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[6].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[7].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[7].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[8].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[8].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[9].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[9].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[10].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[10].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[11].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[11].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[12].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[12].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[13].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[13].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <DockPanel HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding moves.level[14].learnedat}" Width="50"/>
-                                    <TextBlock Text="{Binding moves.level[14].name}"/>
-                                </DockPanel>
-                            </ListBoxItem>
-                        </ListBox>
-                        <ListBox Name="NewMovesListBox" Margin="10" Grid.Row="1" Visibility="Collapsed">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                            <DockPanel HorizontalAlignment="Left">
-                                                <TextBlock Text="{Binding learnedat}"/>
-                                                <TextBlock Text="{Binding name}"/>
-                                            </DockPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
                 </GroupBox>
+                <ComboBox Name="MoveTypeBox" Margin="6" Height="10" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedIndex="0" SelectionChanged="MoveTypeBox_SelectionChanged">
+                    <ComboBoxItem Content="LEVEL"/>
+                    <ComboBoxItem Content="EGG"/>
+                    <ComboBoxItem Content="TM/HM"/>
+                </ComboBox>
                 <GroupBox Header="General" Grid.Column="1">
                     <Viewbox HorizontalAlignment="Left">
                         <DockPanel Margin="5">
