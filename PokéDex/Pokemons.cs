@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Windows.Controls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,17 @@ namespace PokéDex
         public Moves moves { get; set; }
         public Damages damages { get; set; }
         public Misc misc { get; set; }
+        public string speedIndicator
+        {
+            get
+            {
+                if (Convert.ToInt32(stats.speed) < 75)
+                    return Environment.CurrentDirectory + @"\Snail.png";
+                else
+                    return Environment.CurrentDirectory + @"\Hare.png";
+            }
+        }
+        
     }
 
     public class Stats

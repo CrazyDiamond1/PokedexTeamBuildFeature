@@ -159,13 +159,14 @@
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="General" Grid.Column="1">
-                    <Viewbox Height="160" HorizontalAlignment="Left">
+                    <Viewbox HorizontalAlignment="Left">
                         <DockPanel Margin="5">
                             <StackPanel>
                                 <Label Content="ID"/>
                                 <Label Content="NAME"/>
                                 <Label Content="TYPE"/>
                                 <Label Content="CATCH RATE"/>
+                                <Label Content="SPEED RANK" Margin="0,5,0,0"/>
                             </StackPanel>
                             <StackPanel>
                                 <Label>
@@ -182,7 +183,11 @@
                                         <TextBlock x:Name="TypeBlock" Text="{Binding type[1]}"/>
                                     </DockPanel>
                                 </Label>
-                                <Label Content="{Binding misc.capturerate}"/>
+                                <DockPanel>
+                                    <Label Content="{Binding misc.capturerate}"/>
+                                    <Label Content="%"/>
+                                </DockPanel>
+                                <Image Source="{Binding speedIndicator}" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0"/>
                             </StackPanel>
                         </DockPanel>
                     </Viewbox>
