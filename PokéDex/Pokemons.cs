@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Globalization;
+using System.Windows.Controls;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,20 @@ namespace PokéDex
     public class Level
     {
         public string learnedat { get; set; }
-        public string name { get; set; }
+        private string _name;
+
+        public string name
+        {
+            get
+            {
+                TextInfo i = new CultureInfo("en-US", false).TextInfo;
+                return i.ToTitleCase(_name);
+            }
+            set { _name = value; }
+        }
+        private int myVar;
+	
+        
         public string gen { get; set; }
     }
 
