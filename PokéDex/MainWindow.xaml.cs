@@ -32,23 +32,21 @@ namespace PokéDex
         }
 
         private List<Pokemon> res;
-        private int currentPokéIndex;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             res = PokemonDAL.DAL.GetAllPokemon();
             pokéListBox.ItemsSource = res;
-            pokéListBox.SelectedIndex = FilterBox.SelectedIndex = 0;
+            FilterBox.SelectedIndex = 0;
         }
 
         private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (pokéListBox.SelectedIndex == -1)
                 pokéListBox.SelectedIndex = 0;
-            FullGrid.DataContext = pokéListBox.SelectedItem;
-            if (TypeBlock.Text != "")
                 SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
-            else
+            FullGrid.DataContext = pokéListBox.SelectedItem;
+            if (TypeBlock.Text == "")
                 SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Hidden;
         }
 
@@ -81,8 +79,6 @@ namespace PokéDex
 
         private void FilterBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FilterBox.SelectedIndex == -1)
-                FilterBox.SelectedIndex = 0;
             SearchBox.Text = "";
         }
 

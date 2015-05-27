@@ -22,7 +22,7 @@
                 </ComboBox>
                 <TextBox Name="SearchBox" TextAlignment="Left" TextChanged="SearchBox_TextChanged"/>
             </DockPanel>
-            <ListBox Name="pokéListBox" Margin="10" SelectionChanged="pokéListBox_SelectionChanged" Grid.Row="1">
+            <ListBox SelectedIndex="0" Name="pokéListBox" Margin="10" SelectionChanged="pokéListBox_SelectionChanged" Grid.Row="1">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -52,7 +52,7 @@
                 <Image Source="{Binding img}" Width="250" Height="250" Margin="5"/>
                 <GroupBox Grid.Column="1" Grid.Row="1" Header="Moveset">
                     <Grid>
-                    <ListBox Name="LevelMovesBox" ItemsSource="{Binding moves.level}">
+                        <ListBox Name="LevelMovesBox" ItemsSource="{Binding moves.level}" FontSize="15">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel HorizontalAlignment="Left">
@@ -62,7 +62,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                        <ListBox Name="EggMovesBox" ItemsSource="{Binding moves.egg}" Visibility="Hidden">
+                        <ListBox Name="EggMovesBox" ItemsSource="{Binding moves.egg}" FontSize="15" Visibility="Hidden">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel HorizontalAlignment="Left">
@@ -72,7 +72,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                        <ListBox Name="TmHmMovesBox" ItemsSource="{Binding moves.tmhm}" Visibility="Hidden">
+                        <ListBox Name="TmHmMovesBox" ItemsSource="{Binding moves.tmhm}" FontSize="15" Visibility="Hidden">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel HorizontalAlignment="Left">

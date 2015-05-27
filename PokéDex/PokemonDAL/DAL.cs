@@ -26,25 +26,17 @@ namespace PokéDex.PokemonDAL
 
                     foreach (var pokemon in Jdata.AllPokemons)
                     {
-
                         allpokemons.Add(pokemon);
-
                     }
 
                 }
 
             }
             return allpokemons;
-
-
-
-            return null;
         }
 
         public static Pokemon GetPokemon(int nr)
         {
-            Pokemon pokemon;
-
             if (allpokemons == null)
             { GetAllPokemon(); }
 
