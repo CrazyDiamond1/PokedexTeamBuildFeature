@@ -62,7 +62,6 @@ namespace PokéDex
     {
         public string learnedat { get; set; }
         private string _name;
-
         public string name
         {
             get
@@ -72,34 +71,75 @@ namespace PokéDex
             }
             set { _name = value; }
         }
-        private int myVar;
-	
-        
         public string gen { get; set; }
     }
 
     public class Tmhm
     {
-        public string learnedat { get; set; }
-        public string name { get; set; }
+        private string _learnedat;
+        public string learnedat
+        {
+            get
+            {
+                return _learnedat.ToUpper();
+            }
+            set { _learnedat = value; }
+        }
+        private string _name;
+        public string name
+        {
+            get
+            {
+                TextInfo i = new CultureInfo("en-US", false).TextInfo;
+                return i.ToTitleCase(_name);
+            }
+            set { _name = value; }
+        }
         public string gen { get; set; }
     }
 
     public class Egg
     {
-        public string name { get; set; }
+        private string _name;
+        public string name
+        {
+            get
+            {
+                TextInfo i = new CultureInfo("en-US", false).TextInfo;
+                return i.ToTitleCase(_name);
+            }
+            set { _name = value; }
+        }
         public string gen { get; set; }
     }
 
     public class Tutor
     {
-        public string name { get; set; }
+        private string _name;
+        public string name
+        {
+            get
+            {
+                TextInfo i = new CultureInfo("en-US", false).TextInfo;
+                return i.ToTitleCase(_name);
+            }
+            set { _name = value; }
+        }
         public string gen { get; set; }
     }
 
     public class Gen34
     {
-        public string name { get; set; }
+        private string _name;
+        public string name
+        {
+            get
+            {
+                TextInfo i = new CultureInfo("en-US", false).TextInfo;
+                return i.ToTitleCase(_name);
+            }
+            set { _name = value; }
+        }
         public string method { get; set; }
     }
 
