@@ -108,3 +108,5 @@ C:\Users\Johan\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikke
 C:\Users\Johan\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\Pokédex\PokéDex\obj\Debug\PokéDex.g.resources
 C:\Users\Johan\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\Pokédex\PokéDex\obj\Debug\PokéDex.Properties.Resources.resources
 C:\Users\Johan\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\Pokédex\PokéDex\obj\Debug\PokéDex.csproj.GenerateResource.Cache
+C:\Users\Johan\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\Pokédex\PokéDex\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Johan\Dropbox\Artesis\Anno 2014 - 2015\Semester 2\Labo Softwareontwikkeling 4\Week 7\Pokédex\PokéDex\obj\Debug\PokéDex_MarkupCompile.lref

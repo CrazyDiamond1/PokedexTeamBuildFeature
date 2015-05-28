@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -97,6 +98,28 @@ namespace PokéDex
                     TmHmMovesBox.Visibility = Visibility.Visible;
                     break;
             }
+        }
+    }
+    public class DamageToColorConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType,
+            object parameter, CultureInfo culture)
+        {
+            string t = value as string;
+            double dmg = System.Convert.ToDouble(t.Replace(".",","));
+
+            if (dmg < 1)
+                return "Red";
+            if (dmg > 1)
+                return "Green";
+            else
+                return "Black";
+        }
+
+        public object ConvertBack(object value, Type targetType,
+            object parameter, CultureInfo culture)
+        {
+            return null;
         }
     }
 }

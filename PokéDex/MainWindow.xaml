@@ -2,12 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      Width="800" Height="600"
+                      xmlns:pokéDex="clr-namespace:PokéDex"
+                      Width="960" Height="600"
                       Title="Pokédex" Loaded="Window_Loaded" TextBlock.TextAlignment="Center">
+    <Window.Resources>
+        <pokéDex:DamageToColorConverter x:Key="converter" />
+    </Window.Resources>
     <Grid Name="FullGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
@@ -164,6 +169,112 @@
                     </Viewbox>
                 </GroupBox>
             </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="2" Header="Damages">
+            <ListBox DataContext="{Binding damages}" FontSize="15">
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Normal:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding normal}"  Foreground="White" Background="{Binding normal, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Fire:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding fire}"  Foreground="White" Background="{Binding fire, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Water:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding water}"  Foreground="White" Background="{Binding water, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Electric:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding electric}"  Foreground="White" Background="{Binding electric, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Grass:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding grass}"  Foreground="White" Background="{Binding grass, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Ice:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding ice}"  Foreground="White" Background="{Binding ice, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Fight:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding fight}"  Foreground="White" Background="{Binding fight, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Poison:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding poison}"  Foreground="White" Background="{Binding poison, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Ground:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding ground}"  Foreground="White" Background="{Binding ground, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Flying:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding flying}"  Foreground="White" Background="{Binding flying, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Psychic:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding psychic}"  Foreground="White" Background="{Binding psychic, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Bug:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding bug}"  Foreground="White" Background="{Binding bug, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Rock:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding rock}"  Foreground="White" Background="{Binding rock, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Ghost:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding ghost}"  Foreground="White" Background="{Binding ghost, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Dragon:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding dragon}"  Foreground="White" Background="{Binding dragon, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Dark:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding dark}"  Foreground="White" Background="{Binding dark, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <DockPanel>
+                        <TextBlock Text="Steel:"/>
+                        <TextBlock Width="50" HorizontalAlignment="Right" Text="{Binding steel}"  Foreground="White" Background="{Binding steel, Converter={StaticResource converter}}" Margin="10,0"/>
+                    </DockPanel>
+                </ListBoxItem>
+            </ListBox>
         </GroupBox>
     </Grid>
 </Controls:MetroWindow>
