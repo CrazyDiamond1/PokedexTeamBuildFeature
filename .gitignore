@@ -4,7 +4,14 @@
 # wget --no-check-certificate http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
 
 # User-specific files
-
+*.suo
+*.user
+*.sln.docstates
+*.cache
+*.lref
+*.baml
+*.g.i.cs
+*.g.cs
 
 # Build results
 [Dd]ebug/
