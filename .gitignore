@@ -1,4 +1,4 @@
-# Download this file using PowerShell v3 under Windows with the following comand:
+﻿# Download this file using PowerShell v3 under Windows with the following comand:
 # Invoke-WebRequest https://gist.githubusercontent.com/kmorcinek/2710267/raw/ -OutFile .gitignore
 # or wget:
 # wget --no-check-certificate http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
@@ -212,6 +212,30 @@ project.lock.json
 *.feature.cs
 *.feature.xlsx.*
 *.Specs_*.html
+
+
+PokéDex/obj/Debug/App.g.i.cs
+
+PokéDex/obj/Debug/App.g.cs
+
+PokéDex/obj/Debug/GeneratedInternalTypeHelper.g.cs
+
+PokéDex/obj/Debug/GeneratedInternalTypeHelper.g.i.cs
+
+PokéDex/obj/Debug/MainWindow.baml
+
+PokéDex/obj/Debug/MainWindow.g.cs
+
+PokéDex/obj/Debug/MainWindow.g.i.cs
+
+PokéDex/obj/Debug/PokéDex_Content.g.cs
+
+PokéDex/obj/Debug/PokéDex_Content.g.i.cs
+
+PokéDex/obj/Debug/PokéDex_MarkupCompile.cache
+
+PokéDex/obj/Debug/PokéDex_MarkupCompile.lref
+
 
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
