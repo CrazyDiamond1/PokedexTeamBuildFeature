@@ -7,6 +7,11 @@
 *.suo
 *.user
 *.sln.docstates
+*.cache
+*.lref
+*.baml
+*.g.i.cs
+*.g.cs
 
 # Build results
 [Dd]ebug/
