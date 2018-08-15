@@ -106,12 +106,14 @@ namespace PokéDex
             object parameter, CultureInfo culture)
         {
             string t = value as string;
-            double dmg = System.Convert.ToDouble(t.Replace(".",","));
+            double dmg = System.Convert.ToDouble(t/*.Replace(".",",")*/);
 
-            if (dmg < 1)
+            if (dmg < 1 && dmg != 0)
                 return "Red";
-            if (dmg > 1)
+            else if (dmg > 1)
                 return "Green";
+            else if (dmg == 1)
+                return "Gray";
             else
                 return "Black";
         }
