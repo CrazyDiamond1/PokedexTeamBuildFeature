@@ -18,6 +18,11 @@ namespace PokéDex
 
     public class Pokemon
     {
+
+        public Moves moveOne { get; set; }
+        public Moves moveTwo { get; set; }
+        public Moves moveThree { get; set; }
+        public Moves moveFour { get; set; }
         public string id { get; set; }
         public string name { get; set; }
         public string img { get; set; }
