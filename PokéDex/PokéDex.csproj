@@ -92,6 +92,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Team.cs" />
     <Compile Include="PokemonDAL\DAL.cs" />
     <Compile Include="Pokemons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

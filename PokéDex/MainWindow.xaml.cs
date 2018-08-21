@@ -30,22 +30,92 @@ namespace PokéDex
         public MainWindow()
         {
             InitializeComponent();
+            currentView = SummaryBox;
+            LogInOutHandler();
+            
         }
 
         private List<Pokemon> res;
+        private bool isLoggedIn;
+        private GroupBox currentView;
+
+        //"Views"
+        //pokedexView;
+        //loginView;
+        //teamView;
+        //registerView;
+        //addPokemonToTeam;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             res = PokemonDAL.DAL.GetAllPokemon();
             pokéListBox.ItemsSource = res;
             FilterBox.SelectedIndex = 0;
+            isLoggedIn = true;
+        }
+
+        private void LogIn(object sender, RoutedEventArgs e)
+        {
+            isLoggedIn = true;
+            LogInOutHandler();
+            ViewChanger(TeamBox);
+        }
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            isLoggedIn = false;
+            LogInOutHandler();
+            ViewChanger(SummaryBox);
+
+        }
+
+        private void  LogInOutHandler()
+        {
+            if (isLoggedIn)
+            {
+                MenuItem mI1 = new MenuItem();
+                mI1.Header = "_LOGOUT";
+                mI1.Click += LogOut;
+                MenuItem mI2 = new MenuItem();
+                mI2.Header = "_TEAMS";
+                MainMenu.Items.Clear();
+                MainMenu.Items.Add(mI1);
+                MainMenu.Items.Add(mI2);
+            }
+            else
+            {
+                MenuItem mI1 = new MenuItem();
+                mI1.Header = "_LOGIN";
+                mI1.Click += LogIn;
+                MenuItem mI2 = new MenuItem();
+                mI2.Header = "_REGISTER";
+                MainMenu.Items.Clear();
+                MainMenu.Items.Add(mI1);
+                MainMenu.Items.Add(mI2);
+            }
+        }
+
+        //Changes the "View"
+        private void ViewChanger(GroupBox toShow)
+        {
+            currentView.Visibility = Visibility.Collapsed;
+            toShow.Visibility = Visibility.Visible;
+            currentView = toShow;
+            if (currentView == TeamBox)
+            {
+                DamageBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                DamageBox.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (pokéListBox.SelectedIndex == -1)
                 pokéListBox.SelectedIndex = 0;
-                SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
+            SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Visible;
             FullGrid.DataContext = pokéListBox.SelectedItem;
             if (TypeBlock.Text == "")
                 SlashBlock.Visibility = TypeBlock.Visibility = Visibility.Hidden;
@@ -99,7 +169,9 @@ namespace PokéDex
                     break;
             }
         }
+
     }
+
     public class DamageToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,

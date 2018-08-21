@@ -9,12 +9,19 @@
         <pokéDex:DamageToColorConverter x:Key="converter" />
     </Window.Resources>
     <Grid Name="FullGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="95*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
-        <Grid>
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Name="MainMenu" Header="_OPTIONS"/>
+        </Menu>
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="15*"/>
@@ -44,7 +51,28 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-        <GroupBox Grid.Column="1" Header="Summary" Name="SummaryBox">
+        <GroupBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Header="Team" Name="TeamBox" Visibility="Collapsed">
+            <Grid Background="Aquamarine">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+            </Grid>
+        </GroupBox>
+        <GroupBox  Grid.Row="1" Grid.Column="1" Header="Summary" Name="SummaryBox">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -135,9 +163,9 @@
                                 <Label Content="HP"/>
                                 <Label Content="ATTACK"/>
                                 <Label Content="DEFENSE"/>
-                                <Label Content="SPEED"/>
                                 <Label Content="SPEC. ATTACK"/>
                                 <Label Content="SPEC. DEFENSE"/>
+                                <Label Content="SPEED"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Right">
                                 <DockPanel>
@@ -153,10 +181,6 @@
                                     <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.defense}"/>
                                 </DockPanel>
                                 <DockPanel>
-                                    <Label Content="{Binding stats.speed}" Width="30"/>
-                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.speed}"/>
-                                </DockPanel>
-                                <DockPanel>
                                     <Label Content="{Binding stats.spattack}" Width="30"/>
                                     <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spattack}"/>
                                 </DockPanel>
@@ -164,13 +188,17 @@
                                     <Label Content="{Binding stats.spdefense}" Width="30"/>
                                     <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spdefense}"/>
                                 </DockPanel>
+                                <DockPanel>
+                                    <Label Content="{Binding stats.speed}" Width="30"/>
+                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.speed}"/>
+                                </DockPanel>
                             </StackPanel>
                         </DockPanel>
                     </Viewbox>
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="2" Header="Damages">
+        <GroupBox  Grid.Row="1" Grid.Column="2" Header="Damages" Name="DamageBox">
             <ListBox DataContext="{Binding damages}" FontSize="15">
                 <ListBoxItem>
                     <DockPanel>
