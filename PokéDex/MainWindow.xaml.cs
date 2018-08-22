@@ -65,7 +65,6 @@ namespace PokéDex
             isLoggedIn = false;
             LogInOutHandler();
             ViewChanger(SummaryBox);
-
         }
 
         private void  LogInOutHandler()
