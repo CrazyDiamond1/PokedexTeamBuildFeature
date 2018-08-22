@@ -30,6 +30,13 @@
                 <Setter Property="FontSize" Value="22"/>
                 <Setter Property="Margin" Value="5"/>
             </Style>
+            <Style TargetType="PasswordBox">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
         </Grid.Resources>
         <Label Content="R E G I S T E R"
                Grid.Row="0"
@@ -58,13 +65,14 @@
             <Label Content="Password"
                    Grid.Column="0"
                    VerticalAlignment="Top"/>
-            <TextBox Grid.Column="1"
+            <PasswordBox x:Name="pbxPassword"
+                     Grid.Column="1"
                      VerticalAlignment="Top"/>
             <Label Content="Confirm Password"
                    Grid.Column="0"
                    VerticalAlignment="Center"
                    Margin="5, 40, 5, 5"/>
-            <TextBox x:Name="tbxConfirmPassword"
+            <PasswordBox x:Name="pbxConfirmPassword"
                    Grid.Column="1"
                    VerticalAlignment="Center"
                    Margin="5, 40, 5, 5"/>
@@ -77,6 +85,7 @@
                 Height="50"
                 Width="150"
                 FontSize="22"
-                Margin="0, 0, 0, 25"/>
+                Margin="0, 0, 0, 25"
+                Click="btnSubmit_Click"/>
     </Grid>
 </Page>
