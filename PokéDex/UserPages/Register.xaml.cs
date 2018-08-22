@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,53 @@ namespace PokéDex.UserPages
     /// </summary>
     public partial class Register : Page
     {
+        bool isLoggedIn = false;
+        string username = "";
         public Register()
         {
             InitializeComponent();
+        }
+        public void DisplayError(string error)
+        {
+            tbxUsername.Clear();
+            pbxPassword.Clear();
+            pbxConfirmPassword.Clear();
+            MessageBox.Show(error);
+        }
+
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(tbxUsername.Text) && !String.IsNullOrWhiteSpace(pbxPassword.Password) && !String.IsNullOrWhiteSpace(pbxConfirmPassword.Password))
+            {
+                if (pbxConfirmPassword.Password.Equals(pbxPassword.Password))
+                {
+                    using (var db = new PokedexTeamBuilderDBEntities())
+                    {
+                        var query = db.Users.Where(u => u.username == tbxUsername.Text);
+                        var loadUser = query.ToList();
+                        if (loadUser == null)
+                        {
+                            User newUser = new User()
+                            {
+                                username = tbxUsername.Text,
+                                password = pbxPassword.Password
+                            };
+                            db.Users.Add(newUser);
+                            db.SaveChanges();
+
+                            isLoggedIn = true;
+                            username = tbxUsername.Text;
+                            MainWindow home = new MainWindow();
+                            NavigationService.Navigate(home);
+                        }
+                        else
+                        {
+                            DisplayError("The username or password entered is incorrect.");
+                        }
+                    }
+                }
+            }
         }
     }
 }
