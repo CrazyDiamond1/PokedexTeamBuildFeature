@@ -11,13 +11,13 @@ namespace PokéDex.PokemonDAL
 {
     class DAL
     {
-        private static List<Pokemon> allpokemons;
-        public static List<Pokemon> GetAllPokemon()
+        private static List<PokemonModel> allpokemons;
+        public static List<PokemonModel> GetAllPokemon()
         {
 
             if (allpokemons == null)
             {
-                allpokemons = new List<Pokemon>();
+                allpokemons = new List<PokemonModel>();
 
                 using (StreamReader sr = new StreamReader("Resources\\PokemonData.txt"))
                 {
@@ -35,7 +35,7 @@ namespace PokéDex.PokemonDAL
             return allpokemons;
         }
 
-        public static Pokemon GetPokemon(int nr)
+        public static PokemonModel GetPokemon(int nr)
         {
             if (allpokemons == null)
             { GetAllPokemon(); }

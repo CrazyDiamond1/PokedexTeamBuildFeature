@@ -32,7 +32,7 @@ namespace PokéDex
             InitializeComponent();
         }
 
-        private List<Pokemon> res;
+        private List<PokemonModel> res;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -55,7 +55,7 @@ namespace PokéDex
         {
             if (SearchBox.Text != "")
             {
-                IEnumerable<Pokemon> LinqRes = res;
+                IEnumerable<PokemonModel> LinqRes = res;
                 switch (FilterBox.SelectedIndex)
                 {
                     case 0:
