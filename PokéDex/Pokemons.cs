@@ -13,10 +13,10 @@ namespace PokéDex
     public class Rootobject
     {
         [JsonProperty(PropertyName = "Property1")]
-        public Pokemon[] AllPokemons { get; set; }
+        public PokemonModel[] AllPokemons { get; set; }
     }
 
-    public class Pokemon
+    public class PokemonModel
     {
 
         public Moves moveOne { get; set; }

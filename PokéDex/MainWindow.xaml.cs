@@ -35,7 +35,7 @@ namespace PokéDex
             
         }
 
-        private List<Pokemon> res;
+        private List<PokemonModel> res;
         private bool isLoggedIn;
         private GroupBox currentView;
 
@@ -124,7 +124,7 @@ namespace PokéDex
         {
             if (SearchBox.Text != "")
             {
-                IEnumerable<Pokemon> LinqRes = res;
+                IEnumerable<PokemonModel> LinqRes = res;
                 switch (FilterBox.SelectedIndex)
                 {
                     case 0:

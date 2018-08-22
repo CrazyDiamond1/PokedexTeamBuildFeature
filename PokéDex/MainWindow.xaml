@@ -45,7 +45,7 @@
                                     <TextBlock Text="{Binding id}"/>
                                 </DockPanel>
                                 <TextBlock Text="{Binding name}" FontSize="17"/>
-                            </StackPanel>s
+                            </StackPanel>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
