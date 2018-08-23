@@ -22,14 +22,11 @@ namespace PokéDex.UserPages
     /// </summary>
     public partial class Login : Page
     {
-        bool isLoggedIn;
-        string username;
-
         public Login()
         {
             InitializeComponent();
         }
-
+        
         public void DisplayError(string error)
         {
             tbxUsername.Clear();
@@ -47,9 +44,8 @@ namespace PokéDex.UserPages
                     var loadUser = query.ToList();
                     if (loadUser.Count > 0)
                     {
-                        isLoggedIn = true;
-                        username = tbxUsername.Text;
-                        MainWindow home = new MainWindow();
+                        var window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                        Page home = new Page();
                         NavigationService.Navigate(home);
                     }
                     else

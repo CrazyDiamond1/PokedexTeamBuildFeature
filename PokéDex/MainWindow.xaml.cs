@@ -40,6 +40,7 @@ namespace PokéDex
         }
 
         private List<PokemonModel> res;
+
         private bool isLoggedIn;
         private GroupBox currentView;
 
@@ -66,6 +67,31 @@ namespace PokéDex
             navigation.Navigate(new Login());
             //ViewChanger(TeamBox);
 
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchBox.Text != "")
+            {
+                IEnumerable<PokemonModel> LinqRes = res;
+                switch (FilterBox.SelectedIndex)
+                {
+                    case 0:
+                        LinqRes = res.Where(p => p.name.ToLower().Contains(SearchBox.Text.ToLower()));
+                        break;
+
+                    case 1:
+                        LinqRes = res.Where(p => p.id.ToString().Contains(SearchBox.Text));
+                        break;
+
+                    case 2:
+                        //LinqRes = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()) || p.type[1].ToLower().Contains(SearchBox.Text.ToLower()));
+                        var type1 = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()));
+                        LinqRes = type1;
+                        break;
+                }
+                pokéListBox.ItemsSource = LinqRes.ToList();
+            }
+            else
+                pokéListBox.ItemsSource = res;
         }
         private void LogOut(object sender, RoutedEventArgs e)
         {
