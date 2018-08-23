@@ -105,9 +105,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PokemonEntity.edmx</DependentUpon>
     </Compile>
-    <Compile Include="PokemonTeam.cs">
-      <DependentUpon>PokemonEntity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Team.cs">
       <DependentUpon>PokemonEntity.tt</DependentUpon>
     </Compile>

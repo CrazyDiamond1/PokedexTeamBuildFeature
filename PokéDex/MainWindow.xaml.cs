@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using Newtonsoft.Json;
+using PokéDex.UserPages;
 
 namespace PokéDex
 {
@@ -58,7 +59,10 @@ namespace PokéDex
         {
             isLoggedIn = true;
             LogInOutHandler();
-            ViewChanger(TeamBox);
+            NavigationService navigation = NavigationService.GetNavigationService(this);
+            navigation.Navigate(new Login());
+            //ViewChanger(TeamBox);
+
         }
         private void LogOut(object sender, RoutedEventArgs e)
         {

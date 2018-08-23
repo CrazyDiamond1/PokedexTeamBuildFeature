@@ -14,19 +14,14 @@ namespace PokéDex
     
     public partial class Pokemon
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pokemon()
-        {
-            this.PokemonTeams = new HashSet<PokemonTeam>();
-        }
-    
+        public int PokemonID { get; set; }
+        public int TeamID { get; set; }
         public string PokemonName { get; set; }
         public string move1 { get; set; }
         public string move2 { get; set; }
         public string move3 { get; set; }
         public string move4 { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PokemonTeam> PokemonTeams { get; set; }
+        public virtual Team Team { get; set; }
     }
 }

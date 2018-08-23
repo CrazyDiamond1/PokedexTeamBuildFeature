@@ -8,14 +8,14 @@ namespace PokéDex.Models
 {
     public class Team
     {
-        List<Pokemon> team;
+        List<PokemonModel> team;
 
         public Team()
         {
-            team = new List<Pokemon>();
+            team = new List<PokemonModel>();
         }
         
-        public void AddPokemon(Pokemon pocketmonster)
+        public void AddPokemon(PokemonModel pocketmonster)
         {
             if (pocketmonster != null)
             {

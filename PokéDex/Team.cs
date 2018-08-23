@@ -17,7 +17,7 @@ namespace PokéDex
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Team()
         {
-            this.PokemonTeams = new HashSet<PokemonTeam>();
+            this.Pokemons = new HashSet<Pokemon>();
         }
     
         public int TeamID { get; set; }
@@ -25,6 +25,6 @@ namespace PokéDex
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PokemonTeam> PokemonTeams { get; set; }
+        public virtual ICollection<Pokemon> Pokemons { get; set; }
     }
 }
