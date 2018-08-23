@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="PokedexTeamBuilderDBModel.Team" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PokedexTeamBuilderDBModel.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="PokedexTeamBuilderDBModel.FK__Teams__UserID__5629CD9C" ManuallyRouted="false" />
+
         <EntityTypeShape EntityType="PokedexTeamBuilderDBModel.Pokemon" Width="1.5" PointX="5.25" PointY="5.25" />
         <AssociationConnector Association="PokedexTeamBuilderDBModel.FK__Pokemon__TeamID__6383C8BA" />
       </Diagram>
