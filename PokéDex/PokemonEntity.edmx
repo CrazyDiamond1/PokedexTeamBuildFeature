@@ -7,21 +7,17 @@
     <Schema Namespace="PokedexTeamBuilderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Pokemon">
           <Key>
+            <PropertyRef Name="PokemonID" />
+            <PropertyRef Name="TeamID" />
             <PropertyRef Name="PokemonName" />
           </Key>
+          <Property Name="PokemonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
           <Property Name="PokemonName" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="move1" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="move2" Type="varchar" MaxLength="20" />
           <Property Name="move3" Type="varchar" MaxLength="20" />
           <Property Name="move4" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="PokemonTeam">
-          <Key>
-            <PropertyRef Name="PokemonTeamID" />
-          </Key>
-          <Property Name="PokemonTeamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TeamID" Type="int" Nullable="false" />
-          <Property Name="PokemonName" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Teams">
           <Key>
@@ -38,26 +34,14 @@
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__PokemonTe__Pokem__5AEE82B9">
-          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1" />
-          <End Role="PokemonTeam" Type="Self.PokemonTeam" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pokemon">
-              <PropertyRef Name="PokemonName" />
-            </Principal>
-            <Dependent Role="PokemonTeam">
-              <PropertyRef Name="PokemonName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PokemonTe__TeamI__59FA5E80">
+        <Association Name="FK__Pokemon__TeamID__6383C8BA">
           <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="PokemonTeam" Type="Self.PokemonTeam" Multiplicity="*" />
+          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Teams">
               <PropertyRef Name="TeamID" />
             </Principal>
-            <Dependent Role="PokemonTeam">
+            <Dependent Role="Pokemon">
               <PropertyRef Name="TeamID" />
             </Dependent>
           </ReferentialConstraint>
@@ -76,16 +60,11 @@
         </Association>
         <EntityContainer Name="PokedexTeamBuilderDBModelStoreContainer">
           <EntitySet Name="Pokemon" EntityType="Self.Pokemon" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PokemonTeam" EntityType="Self.PokemonTeam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__PokemonTe__Pokem__5AEE82B9" Association="Self.FK__PokemonTe__Pokem__5AEE82B9">
-            <End Role="Pokemon" EntitySet="Pokemon" />
-            <End Role="PokemonTeam" EntitySet="PokemonTeam" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PokemonTe__TeamI__59FA5E80" Association="Self.FK__PokemonTe__TeamI__59FA5E80">
+          <AssociationSet Name="FK__Pokemon__TeamID__6383C8BA" Association="Self.FK__Pokemon__TeamID__6383C8BA">
             <End Role="Teams" EntitySet="Teams" />
-            <End Role="PokemonTeam" EntitySet="PokemonTeam" />
+            <End Role="Pokemon" EntitySet="Pokemon" />
           </AssociationSet>
           <AssociationSet Name="FK__Teams__UserID__5629CD9C" Association="Self.FK__Teams__UserID__5629CD9C">
             <End Role="Users" EntitySet="Users" />
@@ -99,13 +78,17 @@
         <EntityType Name="Pokemon">
           <Key>
             <PropertyRef Name="PokemonName" />
+            <PropertyRef Name="PokemonID" />
+            <PropertyRef Name="TeamID" />
           </Key>
           <Property Name="PokemonName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="move1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="move2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="move3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="move4" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PokemonTeams" Relationship="PokedexTeamBuilderDBModel.FK__PokemonTe__Pokem__5AEE82B9" FromRole="Pokemon" ToRole="PokemonTeam" />
+          <Property Name="PokemonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Team" Relationship="PokedexTeamBuilderDBModel.FK__Pokemon__TeamID__6383C8BA" FromRole="Pokemon" ToRole="Team" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -114,7 +97,7 @@
           <Property Name="TeamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK__Teams__UserID__5629CD9C" FromRole="Teams" ToRole="Users" />
-          <NavigationProperty Name="PokemonTeams" Relationship="PokedexTeamBuilderDBModel.FK__PokemonTe__TeamI__59FA5E80" FromRole="Team" ToRole="PokemonTeam" />
+          <NavigationProperty Name="Pokemons" Relationship="PokedexTeamBuilderDBModel.FK__Pokemon__TeamID__6383C8BA" FromRole="Team" ToRole="Pokemon" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -124,18 +107,6 @@
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Teams" Relationship="Self.FK__Teams__UserID__5629CD9C" FromRole="Users" ToRole="Teams" />
-        </EntityType>
-        <EntityType Name="PokemonTeam">
-          <Key>
-            <PropertyRef Name="TeamID" />
-            <PropertyRef Name="PokemonName" />
-            <PropertyRef Name="PokemonTeamID" />
-          </Key>
-          <Property Name="TeamID" Type="Int32" Nullable="false" />
-          <Property Name="PokemonName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PokemonTeamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Pokemon" Relationship="PokedexTeamBuilderDBModel.FK__PokemonTe__Pokem__5AEE82B9" FromRole="PokemonTeam" ToRole="Pokemon" />
-          <NavigationProperty Name="Team" Relationship="PokedexTeamBuilderDBModel.FK__PokemonTe__TeamI__59FA5E80" FromRole="PokemonTeam" ToRole="Team" />
         </EntityType>
         <Association Name="FK__Teams__UserID__5629CD9C">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
@@ -153,40 +124,23 @@
           <EntitySet Name="Pokemons" EntityType="Self.Pokemon" />
           <EntitySet Name="Teams" EntityType="Self.Team" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="PokemonTeams" EntityType="Self.PokemonTeam" />
           <AssociationSet Name="FK__Teams__UserID__5629CD9C" Association="Self.FK__Teams__UserID__5629CD9C">
             <End Role="Users" EntitySet="Users" />
             <End Role="Teams" EntitySet="Teams" />
           </AssociationSet>
-          <AssociationSet Name="FK__PokemonTe__Pokem__5AEE82B9" Association="PokedexTeamBuilderDBModel.FK__PokemonTe__Pokem__5AEE82B9">
-            <End Role="Pokemon" EntitySet="Pokemons" />
-            <End Role="PokemonTeam" EntitySet="PokemonTeams" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PokemonTe__TeamI__59FA5E80" Association="PokedexTeamBuilderDBModel.FK__PokemonTe__TeamI__59FA5E80">
+          <AssociationSet Name="FK__Pokemon__TeamID__6383C8BA" Association="PokedexTeamBuilderDBModel.FK__Pokemon__TeamID__6383C8BA">
             <End Role="Team" EntitySet="Teams" />
-            <End Role="PokemonTeam" EntitySet="PokemonTeams" />
+            <End Role="Pokemon" EntitySet="Pokemons" />
           </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__PokemonTe__Pokem__5AEE82B9">
-          <End Type="PokedexTeamBuilderDBModel.Pokemon" Role="Pokemon" Multiplicity="1" />
-          <End Type="PokedexTeamBuilderDBModel.PokemonTeam" Role="PokemonTeam" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pokemon">
-              <PropertyRef Name="PokemonName" />
-            </Principal>
-            <Dependent Role="PokemonTeam">
-              <PropertyRef Name="PokemonName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PokemonTe__TeamI__59FA5E80">
+        <Association Name="FK__Pokemon__TeamID__6383C8BA">
           <End Type="PokedexTeamBuilderDBModel.Team" Role="Team" Multiplicity="1" />
-          <End Type="PokedexTeamBuilderDBModel.PokemonTeam" Role="PokemonTeam" Multiplicity="*" />
+          <End Type="PokedexTeamBuilderDBModel.Pokemon" Role="Pokemon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Team">
               <PropertyRef Name="TeamID" />
             </Principal>
-            <Dependent Role="PokemonTeam">
+            <Dependent Role="Pokemon">
               <PropertyRef Name="TeamID" />
             </Dependent>
           </ReferentialConstraint>
@@ -200,6 +154,8 @@
           <EntitySetMapping Name="Pokemons">
             <EntityTypeMapping TypeName="PokedexTeamBuilderDBModel.Pokemon">
               <MappingFragment StoreEntitySet="Pokemon">
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="PokemonID" ColumnName="PokemonID" />
                 <ScalarProperty Name="PokemonName" ColumnName="PokemonName" />
                 <ScalarProperty Name="move1" ColumnName="move1" />
                 <ScalarProperty Name="move2" ColumnName="move2" />
@@ -222,15 +178,6 @@
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PokemonTeams">
-            <EntityTypeMapping TypeName="PokedexTeamBuilderDBModel.PokemonTeam">
-              <MappingFragment StoreEntitySet="PokemonTeam">
-                <ScalarProperty Name="PokemonTeamID" ColumnName="PokemonTeamID" />
-                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
-                <ScalarProperty Name="PokemonName" ColumnName="PokemonName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

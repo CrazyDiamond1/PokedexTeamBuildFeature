@@ -22,8 +22,8 @@ namespace PokéDex.UserPages
     /// </summary>
     public partial class Login : Page
     {
-        bool isLoggedIn = false;
-        string username = "";
+        bool isLoggedIn;
+        string username;
 
         public Login()
         {
@@ -45,7 +45,7 @@ namespace PokéDex.UserPages
                 {
                     var query = db.Users.Where(u => u.username == tbxUsername.Text);
                     var loadUser = query.ToList();
-                    if (loadUser != null)
+                    if (loadUser.Count > 0)
                     {
                         isLoggedIn = true;
                         username = tbxUsername.Text;
