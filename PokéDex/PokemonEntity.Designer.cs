@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\MGThunder\Neumont\Software Projects in Existing Code\PokedexTeamBuildFeature\PokéDex\PokemonEntity.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Noah Tanner\Desktop\Neumont\SoftwareProjectsInExistingCode\PokedexTeambuildFeature\PokedexTeamBuildFeature\PokéDex\PokemonEntity.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
