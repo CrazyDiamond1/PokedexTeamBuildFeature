@@ -34,6 +34,41 @@ namespace PokéDex
         public MainWindow()
         {
             InitializeComponent();
+            currentView = SummaryBox;
+            LogInOutHandler();
+            
+        }
+
+        private List<PokemonModel> res;
+        private bool isLoggedIn;
+        private GroupBox currentView;
+
+        //"Views"
+        //pokedexView;
+        //loginView;
+        //teamView;
+        //registerView;
+        //addPokemonToTeam;
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            res = PokemonDAL.DAL.GetAllPokemon();
+            pokéListBox.ItemsSource = res;
+            FilterBox.SelectedIndex = 0;
+            isLoggedIn = true;
+        }
+
+        private void LogIn(object sender, RoutedEventArgs e)
+        {
+            isLoggedIn = true;
+            LogInOutHandler();
+            NavigationService navigation = NavigationService.GetNavigationService(this);
+            navigation.Navigate(new Login());
+            //ViewChanger(TeamBox);
+
+        }
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
             isLoggedIn = false;
         }
 
