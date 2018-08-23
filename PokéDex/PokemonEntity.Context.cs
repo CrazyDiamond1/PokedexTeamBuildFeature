@@ -28,6 +28,5 @@ namespace PokéDex
         public virtual DbSet<Pokemon> Pokemons { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<PokemonTeam> PokemonTeams { get; set; }
     }
 }

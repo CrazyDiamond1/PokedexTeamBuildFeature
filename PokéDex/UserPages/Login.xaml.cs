@@ -45,11 +45,11 @@ namespace PokéDex.UserPages
                 {
                     var query = db.Users.Where(u => u.username == tbxUsername.Text);
                     var loadUser = query.ToList();
-                    if (loadUser != null)
+                    if (loadUser.Count > 0)
                     {
                         isLoggedIn = true;
                         username = tbxUsername.Text;
-                        MainWindow home = new MainWindow();
+                        Page home = new Page();
                         NavigationService.Navigate(home);
                     }
                     else
