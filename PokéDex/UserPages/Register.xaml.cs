@@ -44,7 +44,7 @@ namespace PokéDex.UserPages
                     {
                         var query = db.Users.Where(u => u.username == tbxUsername.Text);
                         var loadUser = query.ToList();
-                        if (loadUser == null)
+                        if (loadUser.Count == 0)
                         {
                             User newUser = new User()
                             {
@@ -61,7 +61,7 @@ namespace PokéDex.UserPages
                         }
                         else
                         {
-                            DisplayError("The username or password entered is incorrect.");
+                            DisplayError("The username already exists.");
                         }
                     }
                 }
