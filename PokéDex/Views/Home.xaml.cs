@@ -71,6 +71,13 @@ namespace PokéDex.Views
             Login loginPage = new Login();
             this.NavigationService.Navigate(loginPage);
         }
+		
+        private void Register(object sender, RoutedEventArgs e)
+        {
+            LogInOutHandler();
+            Register registerPage = new Register();
+            this.NavigationService.Navigate(registerPage);
+        }
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
@@ -78,13 +85,6 @@ namespace PokéDex.Views
             LogInOutHandler();
             Home homePage = new Home();
             this.NavigationService.Navigate(homePage);
-        }
-
-        private void Register(object sender, RoutedEventArgs e)
-        {
-            LogInOutHandler();
-            Register registerPage = new Register();
-            this.NavigationService.Navigate(registerPage);
         }
 
         private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -113,7 +113,6 @@ namespace PokéDex.Views
                         break;
 
                     case 2:
-                        //LinqRes = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()) || p.type[1].ToLower().Contains(SearchBox.Text.ToLower()));
                         var type1 = res.Where(p => p.type[0].ToLower().Contains(SearchBox.Text.ToLower()));
                         LinqRes = type1;
                         break;
