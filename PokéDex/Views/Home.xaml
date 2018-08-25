@@ -21,7 +21,7 @@
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
-        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+        <Menu Name="Menus" Grid.Row="0" Grid.ColumnSpan="3">
             <MenuItem Name="MainMenu" Header="_OPTIONS"/>
         </Menu>
         <Grid Grid.Row="1">

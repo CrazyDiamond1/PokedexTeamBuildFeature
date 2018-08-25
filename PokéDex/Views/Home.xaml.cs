@@ -3,17 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PokéDex.Views
 {
@@ -47,9 +39,14 @@ namespace PokéDex.Views
                 mI1.Click += LogOut;
                 MenuItem mI2 = new MenuItem();
                 mI2.Header = "_TEAMS";
+                mI2.Click += TeamView;
                 MainMenu.Items.Clear();
                 MainMenu.Items.Add(mI1);
                 MainMenu.Items.Add(mI2);
+                MenuItem mI3 = new MenuItem();
+                mI3.Header = "_User: "+window.username;
+                mI3.HorizontalAlignment = HorizontalAlignment.Right;
+                Menus.Items.Add(mI3);
             }
             else
             {
@@ -62,7 +59,17 @@ namespace PokéDex.Views
                 MainMenu.Items.Clear();
                 MainMenu.Items.Add(mI1);
                 MainMenu.Items.Add(mI2);
+                if (this.GetType() != typeof(Home))
+                {
+                    Home homePage = new Home();
+                    this.NavigationService.Navigate(homePage);
+                }
             }
+        }
+
+        private void TeamView(object sender, RoutedEventArgs e) {
+            Team teamPage = new Team();
+            this.NavigationService.Navigate(teamPage);
         }
 
         private void LogIn(object sender, RoutedEventArgs e)

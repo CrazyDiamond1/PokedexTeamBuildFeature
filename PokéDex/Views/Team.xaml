@@ -9,6 +9,9 @@
       Title="Team">
 
     <Grid>
+        <Menu Name="Menus" Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Name="MainMenu" Header="_OPTIONS"/>
+        </Menu>
         <GroupBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Header="Team" Name="TeamBox" Visibility="Collapsed">
             <Grid Background="Aquamarine">
                 <Grid.ColumnDefinitions>

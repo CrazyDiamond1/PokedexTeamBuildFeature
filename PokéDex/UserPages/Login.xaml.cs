@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokéDex.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
@@ -22,9 +23,38 @@ namespace PokéDex.UserPages
     /// </summary>
     public partial class Login : Page
     {
+        MainWindow window;
         public Login()
         {
             InitializeComponent();
+            window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            LogInOutHandler();
+        }
+
+        private void LogInOutHandler()
+        {
+                MenuItem mI1 = new MenuItem();
+                mI1.Header = "_HOME";
+                mI1.Click += HomeView;
+                MenuItem mI2 = new MenuItem();
+                mI2.Header = "_REGISTER";
+                mI2.Click += Register;
+                MainMenu.Items.Clear();
+                MainMenu.Items.Add(mI1);
+                MainMenu.Items.Add(mI2);
+        }
+
+        private void HomeView(object sender, RoutedEventArgs e)
+        {
+            Home homePage = new Home();
+            this.NavigationService.Navigate(homePage);
+        }
+
+        private void Register(object sender, RoutedEventArgs e)
+        {
+            LogInOutHandler();
+            Register registerPage = new Register();
+            this.NavigationService.Navigate(registerPage);
         }
 
         public void DisplayError(string error)
@@ -60,12 +90,6 @@ namespace PokéDex.UserPages
             {
                 DisplayError("The username or password field is empty");
             }
-        }
-
-        private void btnHome_Click(object sender, RoutedEventArgs e)
-        {
-            Views.Home home = new Views.Home();
-            NavigationService.Navigate(home);
         }
     }
 }

@@ -7,49 +7,43 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Register">
-
     <Grid>
+        <Menu Name="Menus" Height="26" VerticalAlignment="Top">
+            <MenuItem Name="MainMenu" Header="_OPTIONS"/>
+        </Menu>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="Label">
-                <Setter Property="HorizontalAlignment" Value="Right"/>
-                <Setter Property="FontSize" Value="22"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-            <Style TargetType="TextBox">
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="Width" Value="150"/>
-                <Setter Property="FontSize" Value="22"/>
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-            <Style TargetType="PasswordBox">
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="Width" Value="150"/>
-                <Setter Property="FontSize" Value="22"/>
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-        </Grid.Resources>
-        <Button x:Name="btnHome"
-                Content="H O M E"
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                FontSize="14"
-                Height="40"
-                Margin="10"
-                Click="btnHome_Click"/>
-        <Label Content="R E G I S T E R"
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="FontSize" Value="22"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="FontSize" Value="22"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="PasswordBox">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="FontSize" Value="22"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+            <Label Content="R E G I S T E R"
                Grid.Row="0"
                HorizontalAlignment="Center"
                VerticalAlignment="Bottom"
@@ -98,5 +92,6 @@
                 FontSize="22"
                 Margin="0, 0, 0, 25"
                 Click="btnSubmit_Click"/>
+    </Grid>
     </Grid>
 </Page>

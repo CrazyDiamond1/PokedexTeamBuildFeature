@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokéDex.Views;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -21,9 +22,38 @@ namespace PokéDex.UserPages
     /// </summary>
     public partial class Register : Page
     {
+        MainWindow window;
         public Register()
         {
             InitializeComponent();
+            window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            LogInOutHandler();
+        }
+
+        private void LogInOutHandler()
+        {
+            MenuItem mI1 = new MenuItem();
+            mI1.Header = "_HOME";
+            mI1.Click += HomeView;
+            MenuItem mI2 = new MenuItem();
+            mI2.Header = "_LOGIN";
+            mI2.Click += LoginView;
+            MainMenu.Items.Clear();
+            MainMenu.Items.Add(mI1);
+            MainMenu.Items.Add(mI2);
+        }
+
+        private void HomeView(object sender, RoutedEventArgs e)
+        {
+            Home homePage = new Home();
+            this.NavigationService.Navigate(homePage);
+        }
+
+        private void LoginView(object sender, RoutedEventArgs e)
+        {
+            LogInOutHandler();
+            Login loginPage = new Login();
+            this.NavigationService.Navigate(loginPage);
         }
 
         public void DisplayError(string error)
@@ -74,12 +104,6 @@ namespace PokéDex.UserPages
             {
                 DisplayError("One or more of the fields were left blank.");
             }
-        }
-
-        private void btnHome_Click(object sender, RoutedEventArgs e)
-        {
-            Views.Home home = new Views.Home();
-            NavigationService.Navigate(home);
         }
     }
 }
