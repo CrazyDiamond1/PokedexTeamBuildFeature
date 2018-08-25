@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PokéDex.Models
 {
-    public class Team
+    public class TeamModel
     {
         List<PokemonModel> team;
 
-        public Team()
+        public TeamModel()
         {
             team = new List<PokemonModel>();
         }

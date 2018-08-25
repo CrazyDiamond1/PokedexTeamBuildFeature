@@ -27,6 +27,7 @@
                 <Setter Property="Width" Value="150"/>
                 <Setter Property="FontSize" Value="22"/>
                 <Setter Property="Margin" Value="5"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
             <Style TargetType="PasswordBox">
                 <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -34,8 +35,18 @@
                 <Setter Property="Width" Value="150"/>
                 <Setter Property="FontSize" Value="22"/>
                 <Setter Property="Margin" Value="5"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
         </Grid.Resources>
+        <Button x:Name="btnHome"
+                Content="H O M E"
+                Grid.Row="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="14"
+                Height="40"
+                Margin="10"
+                Click="btnHome_Click"/>
         <Label Content="L O G I N"
                Grid.Row="0"
                HorizontalAlignment="Center"

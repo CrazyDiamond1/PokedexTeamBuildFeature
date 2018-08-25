@@ -21,12 +21,11 @@ namespace PokéDex.UserPages
     /// </summary>
     public partial class Register : Page
     {
-        bool isLoggedIn = false;
-        string username = "";
         public Register()
         {
             InitializeComponent();
         }
+
         public void DisplayError(string error)
         {
             tbxUsername.Clear();
@@ -34,7 +33,6 @@ namespace PokéDex.UserPages
             pbxConfirmPassword.Clear();
             MessageBox.Show(error);
         }
-
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -55,10 +53,10 @@ namespace PokéDex.UserPages
                             };
                             db.Users.Add(newUser);
                             db.SaveChanges();
-
-                            isLoggedIn = true;
-                            username = tbxUsername.Text;
-                            MainWindow home = new MainWindow();
+                            var window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                            window.isLoggedIn = true;
+                            window.username = tbxUsername.Text;
+                            Views.Home home = new Views.Home();
                             NavigationService.Navigate(home);
                         }
                         else
@@ -67,7 +65,21 @@ namespace PokéDex.UserPages
                         }
                     }
                 }
+                else
+                {
+                    DisplayError("The password and confirm password do not match.");
+                }
             }
+            else
+            {
+                DisplayError("One or more of the fields were left blank.");
+            }
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            Views.Home home = new Views.Home();
+            NavigationService.Navigate(home);
         }
     }
 }

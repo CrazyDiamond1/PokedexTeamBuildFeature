@@ -22,9 +22,6 @@ namespace PokéDex.UserPages
     /// </summary>
     public partial class Login : Page
     {
-        bool isLoggedIn;
-        string username;
-
         public Login()
         {
             InitializeComponent();
@@ -47,9 +44,10 @@ namespace PokéDex.UserPages
                     var loadUser = query.ToList();
                     if (loadUser.Count > 0)
                     {
-                        isLoggedIn = true;
-                        username = tbxUsername.Text;
-                        MainWindow home = new MainWindow();
+                        var window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                        window.isLoggedIn = true;
+                        window.username = tbxUsername.Text;
+                        Views.Home home = new Views.Home();
                         NavigationService.Navigate(home);
                     }
                     else
@@ -62,6 +60,12 @@ namespace PokéDex.UserPages
             {
                 DisplayError("The username or password field is empty");
             }
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            Views.Home home = new Views.Home();
+            NavigationService.Navigate(home);
         }
     }
 }

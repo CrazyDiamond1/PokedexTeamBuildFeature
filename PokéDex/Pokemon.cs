@@ -21,8 +21,6 @@ namespace PokéDex
         public string move2 { get; set; }
         public string move3 { get; set; }
         public string move4 { get; set; }
-        public int PokemonID { get; set; }
-        public int TeamID { get; set; }
     
         public virtual Team Team { get; set; }
     }

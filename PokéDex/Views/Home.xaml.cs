@@ -23,15 +23,12 @@ namespace PokéDex.Views
     public partial class Home : Page
     {
         private List<PokemonModel> res;
-        bool isLoggedIn;
-        string username;
+        MainWindow window;
         public Home()
         {
             InitializeComponent();
+            window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             LogInOutHandler();
-            var window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            isLoggedIn = window.isLoggedIn;
-            username = window.username;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -43,7 +40,7 @@ namespace PokéDex.Views
 
         private void LogInOutHandler()
         {
-            if (isLoggedIn)
+            if (window.isLoggedIn)
             {
                 MenuItem mI1 = new MenuItem();
                 mI1.Header = "_LOGOUT";
@@ -61,26 +58,33 @@ namespace PokéDex.Views
                 mI1.Click += LogIn;
                 MenuItem mI2 = new MenuItem();
                 mI2.Header = "_REGISTER";
+                mI2.Click += Register;
                 MainMenu.Items.Clear();
                 MainMenu.Items.Add(mI1);
                 MainMenu.Items.Add(mI2);
             }
         }
+
         private void LogIn(object sender, RoutedEventArgs e)
         {
-            isLoggedIn = true;
             LogInOutHandler();
             Login loginPage = new Login();
             this.NavigationService.Navigate(loginPage);
-            //ViewChanger(TeamBox);
         }
+
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            isLoggedIn = false;
+            window.isLoggedIn = false;
             LogInOutHandler();
             Home homePage = new Home();
             this.NavigationService.Navigate(homePage);
-            //ViewChanger(SummaryBox);
+        }
+
+        private void Register(object sender, RoutedEventArgs e)
+        {
+            LogInOutHandler();
+            Register registerPage = new Register();
+            this.NavigationService.Navigate(registerPage);
         }
 
         private void pokéListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
