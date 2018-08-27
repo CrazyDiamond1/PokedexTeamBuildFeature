@@ -123,6 +123,9 @@
     <Compile Include="Views\PokemonPage.xaml.cs">
       <DependentUpon>PokemonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewPokemon.xaml.cs">
+      <DependentUpon>ViewPokemon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewTeam.xaml.cs">
       <DependentUpon>ViewTeam.xaml</DependentUpon>
     </Compile>
@@ -154,13 +157,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ViewPokemon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ViewTeam.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\TeamModel.cs" />
     <Compile Include="PokemonDAL\DAL.cs" />
     <Compile Include="Pokemons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -209,6 +215,7 @@
       <DependentUpon>PokemonEntity.edmx</DependentUpon>
       <LastGenOutput>PokemonEntity.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\plus.png" />
     <Content Include="Resources\PokemonData.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

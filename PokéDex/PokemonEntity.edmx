@@ -133,21 +133,6 @@
             <End Role="Pokemon" EntitySet="Pokemons" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Pokemon">
-          <Key>
-            <PropertyRef Name="PokemonID" />
-            <PropertyRef Name="TeamID" />
-            <PropertyRef Name="PokemonName" />
-          </Key>
-          <Property Name="PokemonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TeamID" Type="Int32" Nullable="false" />
-          <Property Name="PokemonName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="move1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="move2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="move3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="move4" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Team" Relationship="PokedexTeamBuilderDBModel.FK__Pokemon__TeamID__6383C8BA" FromRole="Pokemon" ToRole="Team" />
-        </EntityType>
         <Association Name="FK__Pokemon__TeamID__6383C8BA">
           <End Type="PokedexTeamBuilderDBModel.Team" Role="Team" Multiplicity="1" />
           <End Type="PokedexTeamBuilderDBModel.Pokemon" Role="Pokemon" Multiplicity="*" />

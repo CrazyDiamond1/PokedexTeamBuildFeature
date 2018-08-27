@@ -13,7 +13,7 @@
             <MenuItem Name="MainMenu" Header="_OPTIONS"/>
         </Menu>
         <GroupBox Name="CurrentBox" Margin="10 40 10 230">
-            <Grid>
+            <Grid Name="TeamImageGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -26,25 +26,22 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Image Name="p1" Grid.Row="1" Grid.Column="0"/>
-                <Image Name="p2" Grid.Row="0" Grid.Column="1"/>
-                <Image Name="p3" Grid.Row="1" Grid.Column="2"/>
-                <Image Name="p4" Grid.Row="1" Grid.Column="3"/>
-                <Image Name="p5" Grid.Row="0" Grid.Column="4"/>
-                <Image Name="p6" Grid.Row="1" Grid.Column="5"/>
             </Grid>
         </GroupBox>
         <GroupBox Name="TeamsBox" Header="Teams" Margin="10 340 10 10">
             <ListBox Name="TeamsList">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="100">
+                        <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="100"/>
-                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="70"/>
                             </Grid.RowDefinitions>
-                            <Image Source="{Binding img}"/>
-                            <Button Grid.Row="1" Content="{Binding TeamID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                            <Button Grid.Row="0" Margin="10"  Click="DisplayDifferentTeam" Foreground="Black" Content="{Binding TeamID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

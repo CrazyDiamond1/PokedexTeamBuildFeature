@@ -1,5 +1,4 @@
-﻿using PokéDex.Models;
-using PokéDex.UserPages;
+﻿using PokéDex.UserPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,70 +30,110 @@ namespace PokéDex.Views
             teams = new List<Team>();
             window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             LogInOutHandler();
-            LoadTeam();
+            LoadTeams();
+        }
+        
+        private void LoadTeams(int num = 2)
+        {
+            using (var db = new PokedexTeamBuilderDBEntities())
+            {
+                foreach (var team in db.Teams.Where(t => t.UserID == db.Users.Where(u => u.username == window.username).FirstOrDefault().UserID))
+                {
+                    teams.Add(team);
+                }
+            }
+
+            TeamImageGrid.Children.Clear();
+
+            currentTeam = teams.Where(t => t.TeamID == num).FirstOrDefault();
+            CurrentBox.Header = "TEAM ID: " + currentTeam.TeamID;
+            CreateTeamDisplayImages();
+            LoadTeamsIntoList();
         }
 
-        //private TeamModel TempTeam()
-        //{
-        //    Team t = new Team();
-        //    Pokemon p1 = new Pokemon();
-        //    t.Pokemons.Add(PokemonDAL.DAL.GetPokemon(545));
-        //    t.AddPokemon(PokemonDAL.DAL.GetPokemon(6));
-        //    t.AddPokemon(PokemonDAL.DAL.GetPokemon(9));
-        //    t.AddPokemon(PokemonDAL.DAL.GetPokemon(542));
-        //    t.AddPokemon(PokemonDAL.DAL.GetPokemon(545));
-        //    t.AddPokemon(PokemonDAL.DAL.GetPokemon(530));
-        //    t.name = t.TeamID;
-        //    return t;
-        //}
-
-        private void LoadTeam()
+        private void DisplayDifferentTeam(object sender, RoutedEventArgs e)
         {
-            CreateAddInitialTeam();
-            currentTeam = teams[0];
-
-            CurrentBox.Header = teams[0].TeamID;
-            p1.Source = new BitmapImage(new Uri(PokemonDAL.DAL.GetPokemon(currentTeam.Pokemons.ElementAt(0).PokemonID).img, UriKind.Absolute));
-            p2.Source = new BitmapImage(new Uri(PokemonDAL.DAL.GetPokemon(currentTeam.Pokemons.ElementAt(1).PokemonID).img, UriKind.Absolute));
-            p3.Source = new BitmapImage(new Uri(PokemonDAL.DAL.GetPokemon(currentTeam.Pokemons.ElementAt(2).PokemonID).img, UriKind.Absolute));
-            p4.Source = new BitmapImage(new Uri(PokemonDAL.DAL.GetPokemon(currentTeam.Pokemons.ElementAt(3).PokemonID).img, UriKind.Absolute));
-            p5.Source = new BitmapImage(new Uri(PokemonDAL.DAL.GetPokemon(currentTeam.Pokemons.ElementAt(4).PokemonID).img, UriKind.Absolute));
-            p6.Source = new BitmapImage(new Uri(PokemonDAL.DAL.GetPokemon(currentTeam.Pokemons.ElementAt(5).PokemonID).img, UriKind.Absolute));
+            LoadTeams(int.Parse((sender as Button).Content.ToString()));
         }
 
-
-        private void CreateAddInitialTeam()
+        private void LoadTeamsIntoList()
         {
-            Team t = new Team();
-            
-            t.Pokemons.Add(AddPokemonToTeam(351));
-            t.Pokemons.Add(AddPokemonToTeam(31));
-            t.Pokemons.Add(AddPokemonToTeam(51));
-            t.Pokemons.Add(AddPokemonToTeam(3));
-            t.Pokemons.Add(AddPokemonToTeam(5));
-            t.Pokemons.Add(AddPokemonToTeam(1));
-
-            teams.Add(t);
-
-            //using (var db = new PokedexTeamBuilderDBEntities())
+            TeamsList.ItemsSource = teams;
+            //foreach (var item in TeamsList.Items)
             //{
-            //    Team newTeam = t;
-            //    newTeam.User = db.Users.Where(u => u.username == window.username).First();
-            //    newTeam.UserID = newTeam.User.UserID;
-
-            //    db.Teams.Add(t);
-            //    db.SaveChanges();
+            //    item.
             //}
         }
 
-        private Pokemon AddPokemonToTeam(int pokemonID)
+        //Creates the images to display the user's currently selected team
+        private void CreateTeamDisplayImages()
         {
-            Pokemon pok = new Pokemon();
-            pok.PokemonID = pokemonID;
-            pok.PokemonName = PokemonDAL.DAL.GetPokemon(pok.PokemonID).name;
-            return pok;
+            using (var db = new PokedexTeamBuilderDBEntities())
+            {
+                Team current = db.Teams.Where(t => t.TeamID == currentTeam.TeamID).FirstOrDefault();
+                int i = 0;
+                if (current.Pokemons.Count != 0)
+                {
+                    foreach (var poke in current.Pokemons)
+                    {
+                        Image img = new Image();
+                        img.SetValue(Grid.ColumnProperty, i);
+                        if (i == 1 || i == 4)
+                        {
+                            img.SetValue(Grid.RowProperty, 0);
+                        }
+                        else
+                        {
+                            img.SetValue(Grid.RowProperty, 1);
+                        }
+                        img.Source = new BitmapImage(new Uri(PokemonDAL.DAL.GetAllPokemon().Where(p => p.name == poke.PokemonName).FirstOrDefault().img, UriKind.Absolute));
+                        img.MouseLeftButtonDown += ToPokemonView;
+                        TeamImageGrid.Children.Add(img);
+                        i++;
+                    }
+                }
+                if (i < 6)
+                {
+                    Image img = new Image();
+                    img.SetValue(Grid.ColumnProperty, i);
+                    if (i == 1 || i == 4)
+                    {
+                        img.SetValue(Grid.RowProperty, 0);
+                    }
+                    else
+                    {
+                        img.SetValue(Grid.RowProperty, 1);
+                    }
+                    img.Source = new BitmapImage(new Uri("..\\Resources\\plus.png", UriKind.Relative));
+                    img.MouseLeftButtonDown += ToPokemonView;
+                    TeamImageGrid.Children.Add(img);
+                }
+            }
         }
 
+        //Adds a team to the database under current users id
+        private void AddTeam()
+        {
+            Team t = new Team();
+            
+            //t.Pokemons.Add(AddPokemonToTeam(351));
+            //t.Pokemons.Add(AddPokemonToTeam(31));
+            //t.Pokemons.Add(AddPokemonToTeam(51));
+            //t.Pokemons.Add(AddPokemonToTeam(3));
+            //t.Pokemons.Add(AddPokemonToTeam(5));
+            //t.Pokemons.Add(AddPokemonToTeam(1));
+
+            using (var db = new PokedexTeamBuilderDBEntities())
+            {
+                t.User = db.Users.Where(u => u.username == window.username).First();
+                t.UserID = t.User.UserID;
+                
+                db.Teams.Add(t);
+                db.SaveChanges();
+            }
+        }
+
+        //Creates correct menuItems for the current page
         private void LogInOutHandler()
         {
                 MenuItem mI1 = new MenuItem();
@@ -112,18 +151,30 @@ namespace PokéDex.Views
                 Menus.Items.Add(mI3);
         }
 
+        //Takes user to homeView
         private void HomeView(object sender, RoutedEventArgs e)
         {
             Home homePage = new Home();
             this.NavigationService.Navigate(homePage);
         }
 
+        //Logs the user out
         private void LogOut(object sender, RoutedEventArgs e)
         {
             window.isLoggedIn = false;
-            LogInOutHandler();
+            //LogInOutHandler();
             Home homePage = new Home();
             this.NavigationService.Navigate(homePage);
+        }
+
+        private void ToPokemonView(object sender, RoutedEventArgs e)
+        {
+            int teamIndex = TeamImageGrid.Children.IndexOf((Image)sender);
+            using (var db = new PokedexTeamBuilderDBEntities())
+            {
+                ViewPokemon pokemonPage = new ViewPokemon(db.Teams.Where(curr => curr.TeamID == currentTeam.TeamID).FirstOrDefault().Pokemons.ElementAt(teamIndex));
+                this.NavigationService.Navigate(pokemonPage);
+            }
         }
     }
 }
