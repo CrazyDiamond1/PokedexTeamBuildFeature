@@ -68,7 +68,7 @@ namespace PokéDex.Views
         }
 
         private void TeamView(object sender, RoutedEventArgs e) {
-            Team teamPage = new Team();
+            ViewTeam teamPage = new ViewTeam();
             this.NavigationService.Navigate(teamPage);
         }
 

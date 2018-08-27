@@ -120,8 +120,11 @@
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Team.xaml.cs">
-      <DependentUpon>Team.xaml</DependentUpon>
+    <Compile Include="Views\PokemonPage.xaml.cs">
+      <DependentUpon>PokemonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewTeam.xaml.cs">
+      <DependentUpon>ViewTeam.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -147,7 +150,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Team.xaml">
+    <Page Include="Views\PokemonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewTeam.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
