@@ -32,8 +32,8 @@ namespace PokéDex.Views
             LogInOutHandler();
             LoadTeams();
         }
-        
-        private void LoadTeams(int num = 2)
+
+        private void LoadTeams(int num = 0)
         {
             using (var db = new PokedexTeamBuilderDBEntities())
             {
@@ -44,25 +44,47 @@ namespace PokéDex.Views
             }
 
             TeamImageGrid.Children.Clear();
+            if (num == 0)
+            {
+                currentTeam = teams.Where(t => t.TeamID == t.TeamID).FirstOrDefault();
+            }
+            else{
 
-            currentTeam = teams.Where(t => t.TeamID == num).FirstOrDefault();
-            CurrentBox.Header = "TEAM ID: " + currentTeam.TeamID;
-            CreateTeamDisplayImages();
-            LoadTeamsIntoList();
+                currentTeam = teams.Where(t => t.TeamID == num).FirstOrDefault();
+            }
+            if (currentTeam != null)
+            {
+                CurrentBox.Header = "TEAM ID: " + currentTeam.TeamID;
+                CreateTeamDisplayImages();
+                LoadTeamsIntoList();
+
+            }
+
+            Button addButton = new Button();
+            addButton.Content = "Add Team";
+            addButton.SetCurrentValue(Grid.ColumnProperty, 0);
+            TeamImageGrid.Children.Add(addButton);
+            addButton.Margin = new Thickness(20, 30, 20, 30);
+            addButton.Click += AddTeam;
+            Button deleteButton = new Button();
+            deleteButton.Content = "Delete Team";
+            deleteButton.SetCurrentValue(Grid.ColumnProperty, 5);
+            deleteButton.Margin = new Thickness(20, 30, 20, 30);
+            deleteButton.Click += DeletePokemon;
+            TeamImageGrid.Children.Add(deleteButton);
+
         }
 
+        //Button click function used to display the selected team
         private void DisplayDifferentTeam(object sender, RoutedEventArgs e)
         {
             LoadTeams(int.Parse((sender as Button).Content.ToString()));
         }
 
+        //Loads teams into the listbox
         private void LoadTeamsIntoList()
         {
             TeamsList.ItemsSource = teams;
-            //foreach (var item in TeamsList.Items)
-            //{
-            //    item.
-            //}
         }
 
         //Creates the images to display the user's currently selected team
@@ -112,43 +134,86 @@ namespace PokéDex.Views
         }
 
         //Adds a team to the database under current users id
-        private void AddTeam()
+        private void AddTeam(object sender, RoutedEventArgs e)
         {
             Team t = new Team();
-            
-            //t.Pokemons.Add(AddPokemonToTeam(351));
-            //t.Pokemons.Add(AddPokemonToTeam(31));
-            //t.Pokemons.Add(AddPokemonToTeam(51));
-            //t.Pokemons.Add(AddPokemonToTeam(3));
-            //t.Pokemons.Add(AddPokemonToTeam(5));
-            //t.Pokemons.Add(AddPokemonToTeam(1));
 
             using (var db = new PokedexTeamBuilderDBEntities())
             {
                 t.User = db.Users.Where(u => u.username == window.username).First();
                 t.UserID = t.User.UserID;
-                
+
                 db.Teams.Add(t);
                 db.SaveChanges();
             }
+
+            ViewTeam teamPage = new ViewTeam();
+            this.NavigationService.Navigate(teamPage);
+
+        }
+
+        private void DeletePokemon(object sender, RoutedEventArgs e)
+        {
+            using (var db = new PokedexTeamBuilderDBEntities())
+            {
+                var query = db.Pokemons.Where(p => p.TeamID == currentTeam.TeamID);
+                List<Pokemon> toRemove = query.ToList();
+                foreach (var pokemon in toRemove)
+                {
+                    db.Pokemons.Remove(pokemon);
+                }
+                db.SaveChanges();
+                Team team = db.Teams.Where(t => t.TeamID == currentTeam.TeamID).FirstOrDefault();
+                db.Teams.Remove(team);
+                db.SaveChanges();
+            }
+
+            ViewTeam teamPage = new ViewTeam();
+            this.NavigationService.Navigate(teamPage);
         }
 
         //Creates correct menuItems for the current page
         private void LogInOutHandler()
         {
-                MenuItem mI1 = new MenuItem();
-                mI1.Header = "_LOGOUT";
-                mI1.Click += LogOut;
-                MenuItem mI2 = new MenuItem();
-                mI2.Header = "_HOME";
-                mI2.Click += HomeView;
-                MainMenu.Items.Clear();
-                MainMenu.Items.Add(mI1);
-                MainMenu.Items.Add(mI2);
-                MenuItem mI3 = new MenuItem();
-                mI3.Header = "_User: " + window.username;
-                mI3.HorizontalAlignment = HorizontalAlignment.Right;
-                Menus.Items.Add(mI3);
+            MenuItem mI1 = new MenuItem();
+            mI1.Header = "_LOGOUT";
+            mI1.Click += LogOut;
+            MenuItem mI2 = new MenuItem();
+            mI2.Header = "_HOME";
+            mI2.Click += HomeView;
+            MainMenu.Items.Clear();
+            MainMenu.Items.Add(mI1);
+            MainMenu.Items.Add(mI2);
+            MenuItem mI3 = new MenuItem();
+            mI3.Header = "_User: " + window.username;
+            mI3.HorizontalAlignment = HorizontalAlignment.Right;
+            Menus.Items.Add(mI3);
+            //MenuItem mI4 = new MenuItem();
+            //mI4.Header = "_DELETE_ACCOUNT";
+            //mI4.Click += DeleteAccount;
+            //mI4.HorizontalAlignment = HorizontalAlignment.Right;
+            //mI3.Items.Add(mI4);
+        }
+
+        private void DeleteAccount(object sender, RoutedEventArgs e)
+        {
+            using (var db = new PokedexTeamBuilderDBEntities())
+            {
+                var queryUser = db.Users.Where(u => u.username == window.username).FirstOrDefault();
+                var queryTeams = db.Teams.Where(t => t.UserID == queryUser.UserID);
+                var teamsToDelete = queryTeams.ToList();
+                List<Pokemon> queryPokemon;
+                teamsToDelete.ForEach(t =>
+                {
+                    queryPokemon = db.Pokemons.Where(p => p.TeamID == t.TeamID).ToList();
+                    queryPokemon.ForEach(p =>
+                    {
+                        db.Pokemons.Remove(p);
+                    });
+                    db.Teams.Remove(t);
+                });
+
+            }
         }
 
         //Takes user to homeView
@@ -170,9 +235,17 @@ namespace PokéDex.Views
         private void ToPokemonView(object sender, RoutedEventArgs e)
         {
             int teamIndex = TeamImageGrid.Children.IndexOf((Image)sender);
+            ViewPokemon pokemonPage;
             using (var db = new PokedexTeamBuilderDBEntities())
             {
-                ViewPokemon pokemonPage = new ViewPokemon(db.Teams.Where(curr => curr.TeamID == currentTeam.TeamID).FirstOrDefault().Pokemons.ElementAt(teamIndex));
+                if (db.Teams.Where(curr => curr.TeamID == currentTeam.TeamID).FirstOrDefault().Pokemons.Count == 6)
+                {
+                    pokemonPage = new ViewPokemon(db.Teams.Where(curr => curr.TeamID == currentTeam.TeamID).FirstOrDefault(), db.Teams.Where(curr => curr.TeamID == currentTeam.TeamID).FirstOrDefault().Pokemons.ElementAt(teamIndex));
+                }
+                else
+                {
+                    pokemonPage = new ViewPokemon(db.Teams.Where(curr => curr.TeamID == currentTeam.TeamID).FirstOrDefault(), null);
+                }
                 this.NavigationService.Navigate(pokemonPage);
             }
         }

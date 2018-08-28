@@ -44,9 +44,14 @@ namespace PokéDex.Views
                 MainMenu.Items.Add(mI1);
                 MainMenu.Items.Add(mI2);
                 MenuItem mI3 = new MenuItem();
-                mI3.Header = "_User: "+window.username;
+                mI3.Header = "_User: " + window.username;
                 mI3.HorizontalAlignment = HorizontalAlignment.Right;
                 Menus.Items.Add(mI3);
+                //MenuItem mI4 = new MenuItem();
+                //mI4.Header = "_DELETE_ACCOUNT";
+                //mI4.Click += DeleteAccount;
+                //mI4.HorizontalAlignment = HorizontalAlignment.Right;
+                //mI3.Items.Add(mI4);
             }
             else
             {
@@ -67,7 +72,29 @@ namespace PokéDex.Views
             }
         }
 
-        private void TeamView(object sender, RoutedEventArgs e) {
+        private void DeleteAccount(object sender, RoutedEventArgs e)
+        {
+            using (var db = new PokedexTeamBuilderDBEntities())
+            {
+                var queryUser = db.Users.Where(u => u.username == window.username).FirstOrDefault();
+                var queryTeams = db.Teams.Where(t => t.UserID == queryUser.UserID);
+                var teamsToDelete = queryTeams.ToList();
+                List<Pokemon> queryPokemon;
+                teamsToDelete.ForEach(t =>
+                {
+                    queryPokemon = db.Pokemons.Where(p => p.TeamID == t.TeamID).ToList();
+                    queryPokemon.ForEach(p =>
+                    {
+                        db.Pokemons.Remove(p);
+                    });
+                    db.Teams.Remove(t);
+                });
+
+            }
+        }
+
+        private void TeamView(object sender, RoutedEventArgs e)
+        {
             ViewTeam teamPage = new ViewTeam();
             this.NavigationService.Navigate(teamPage);
         }
@@ -78,7 +105,7 @@ namespace PokéDex.Views
             Login loginPage = new Login();
             this.NavigationService.Navigate(loginPage);
         }
-		
+
         private void Register(object sender, RoutedEventArgs e)
         {
             LogInOutHandler();

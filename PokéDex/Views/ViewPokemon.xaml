@@ -54,130 +54,18 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-        <GroupBox  Grid.Row="1" Grid.Column="1" Header="Summary" Name="SummaryBox">
+        <GroupBox  Grid.Row="1" Grid.Column="1" Header="Pokemon" Margin="0 5 0 5" Name="PokemonBox">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Image Source="{Binding img}" Width="250" Height="250" Margin="5"/>
-                <GroupBox Grid.Column="1" Grid.Row="1" Header="Moveset">
-                    <Grid>
-                        <ListBox Name="LevelMovesBox" ItemsSource="{Binding moves.level}" FontSize="15">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <DockPanel HorizontalAlignment="Left">
-                                        <TextBlock Text="{Binding learnedat}" Width="50"/>
-                                        <TextBlock Text="{Binding name}"/>
-                                    </DockPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <ListBox Name="EggMovesBox" ItemsSource="{Binding moves.egg}" FontSize="15" Visibility="Hidden">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <DockPanel HorizontalAlignment="Left">
-                                        <TextBlock Text="EGG" Width="50"/>
-                                        <TextBlock Text="{Binding name}"/>
-                                    </DockPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <ListBox Name="TmHmMovesBox" ItemsSource="{Binding moves.tmhm}" FontSize="15" Visibility="Hidden">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <DockPanel HorizontalAlignment="Left">
-                                        <TextBlock Text="{Binding learnedat}" Width="50"/>
-                                        <TextBlock Text="{Binding name}"/>
-                                    </DockPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Grid>
-                </GroupBox>
-                <ComboBox Name="MoveTypeBox" Margin="6" Height="10" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedIndex="0" SelectionChanged="MoveTypeBox_SelectionChanged">
-                    <ComboBoxItem Content="LEVEL"/>
-                    <ComboBoxItem Content="EGG"/>
-                    <ComboBoxItem Content="TM/HM"/>
-                </ComboBox>
-                <GroupBox Header="General" Grid.Column="1">
-                    <Viewbox HorizontalAlignment="Left">
-                        <DockPanel Margin="5">
-                            <StackPanel>
-                                <Label Content="ID"/>
-                                <Label Content="NAME"/>
-                                <Label Content="TYPE"/>
-                                <Label Content="CATCH RATE"/>
-                                <Label Content="SPEED RANK" Margin="0,5,0,0"/>
-                            </StackPanel>
-                            <StackPanel>
-                                <Label>
-                                    <DockPanel>
-                                        <TextBlock Text="#"/>
-                                        <TextBlock Text="{Binding id}"/>
-                                    </DockPanel>
-                                </Label>
-                                <Label Content="{Binding name}"/>
-                                <Label>
-                                    <DockPanel>
-                                        <TextBlock Text="{Binding type[0]}"/>
-                                        <TextBlock x:Name="SlashBlock" Text=" / "/>
-                                        <TextBlock x:Name="TypeBlock" Text="{Binding type[1]}"/>
-                                    </DockPanel>
-                                </Label>
-                                <DockPanel>
-                                    <Label Content="{Binding misc.capturerate}"/>
-                                    <Label Content="%"/>
-                                </DockPanel>
-                                <Image Source="{Binding speedIndicator}" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0"/>
-                            </StackPanel>
-                        </DockPanel>
-                    </Viewbox>
-                </GroupBox>
-                <GroupBox Header="Stats" Grid.Row="1">
-                    <Viewbox>
-                        <DockPanel Margin="5">
-                            <StackPanel>
-                                <Label Content="HP"/>
-                                <Label Content="ATTACK"/>
-                                <Label Content="DEFENSE"/>
-                                <Label Content="SPEC. ATTACK"/>
-                                <Label Content="SPEC. DEFENSE"/>
-                                <Label Content="SPEED"/>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Right">
-                                <DockPanel>
-                                    <Label Content="{Binding stats.hp}" Width="30"/>
-                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.hp}"/>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Label Content="{Binding stats.attack}" Width="30"/>
-                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.attack}"/>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Label Content="{Binding stats.defense}" Width="30"/>
-                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.defense}"/>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Label Content="{Binding stats.spattack}" Width="30"/>
-                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spattack}"/>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Label Content="{Binding stats.spdefense}" Width="30"/>
-                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.spdefense}"/>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Label Content="{Binding stats.speed}" Width="30"/>
-                                    <ProgressBar Minimum="0" Maximum="250" Width="100" HorizontalAlignment="Left" Value="{Binding stats.speed}"/>
-                                </DockPanel>
-                            </StackPanel>
-                        </DockPanel>
-                    </Viewbox>
-                </GroupBox>
+                <Image Source="{Binding img}" Width="250" Height="300" Margin="5"/>
+                <ComboBox Name="Move1Box" Margin="25 25 25 325" Grid.Column="1" Height="25"/>
+                <ComboBox Name="Move2Box" Margin="25 25 25 225" Grid.Column="1" Height="25"/>
+                <ComboBox Name="Move3Box" Margin="25 25 25 125" Grid.Column="1" Height="25"/>
+                <ComboBox Name="Move4Box" Margin="25" Grid.Column="1" Height="25"/>
+                <Button Name="Save"       Margin="25 300 25 25"  Content="Save" Height="25" Width="150" Click="SavePokemon" Grid.Column="1"/>
             </Grid>
         </GroupBox>
         <GroupBox  Grid.Row="1" Grid.Column="2" Header="Damages" Name="DamageBox">
